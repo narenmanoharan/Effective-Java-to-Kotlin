@@ -6,11 +6,13 @@ Kotlin implementation of the effective java items from [Effective Java](https://
 ### Table of Contents
 
 1. [Static Factory Methods](#static-factory-methods)
+2. [Builder Pattern] (#builder-pattern)
 
+--- 
 
 ### Static Factory Methods
 
-A simple static method that returns an instance of the class.
+A simple static method that returns an instance of the class. Implemented in Kotlin using [Object declarations.](https://kotlinlang.org/docs/reference/object-declarations.html)
 
 #### Pros
 
@@ -31,4 +33,14 @@ A simple static method that returns an instance of the class.
 - newInstance
 - getType
 - newType
+
+--
+
+### Builder Pattern
+
+This pattern is used when designing classes whose constructors may have more than a handful of parameters. They also simulate the behavior of named optional parameters which are available in Kotlin. 
+
+In most cases you don't need to use builders in Kotlin because we have default and named arguments. But, it is nice to have.
+
+--
 
