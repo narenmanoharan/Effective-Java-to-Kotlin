@@ -12,7 +12,7 @@ class VacationTest {
   var vacation : Vacation? = null
 
   @Before fun setUp() {
-    vacation = Vacation.build(mode = FLIGHT, cost = 10000) {
+      vacation = Vacation.build(mode = FLIGHT, cost = 10000) {
       destination = "SEYCHELLES"
       date = 20
       month = 9

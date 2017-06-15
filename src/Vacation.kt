@@ -12,6 +12,7 @@ class Vacation (val destination: String?,
                 val duration: Int,
                 val mode: Mode,
                 val cost: Int) {
+
   private constructor(builder: Builder) : this(builder.destination,
                                                builder.date,
                                                builder.month,

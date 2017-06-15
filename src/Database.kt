@@ -2,6 +2,7 @@
  * Created by Naren on 6/15/17.
  */
 
+// Singleton instance using object in Kotlin
 object Database {
 
   private var dbVersion : Double = 0.1
