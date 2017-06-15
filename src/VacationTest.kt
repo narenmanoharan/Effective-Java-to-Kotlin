@@ -1,3 +1,7 @@
+import Mode.BOAT
+import Mode.CAR
+import Mode.FLIGHT
+import Mode.TRAIN
 import org.junit.Before
 import org.junit.Test
 
@@ -7,19 +11,44 @@ import org.junit.Assert.*
  * Created by Naren on 6/14/17.
  */
 class VacationTest {
-  @Before fun setUp() {}
 
-  @Test fun getDestination() {}
+  var vacation : Vacation? = null
 
-  @Test fun getDate() {}
+  @Before fun setUp() {
+    vacation = Vacation.build(mode = FLIGHT, cost = 10000) {
+      destination = "SEYCHELLES"
+      date = 20
+      month = 9
+      year = 2018
+      duration = 2
+    }
+  }
 
-  @Test fun getMonth() {}
+  @Test fun getDestination() {
+    assertEquals("SEYCHELLES", vacation?.destination)
+  }
 
-  @Test fun getYear() {}
+  @Test fun getDate() {
+    assertEquals(20, vacation?.date)
+  }
 
-  @Test fun getDuration() {}
+  @Test fun getMonth() {
+    assertEquals(9, vacation?.month)
+  }
 
-  @Test fun getMode() {}
+  @Test fun getYear() {
+    assertEquals(2018, vacation?.year)
+  }
 
-  @Test fun getCost() {}
+  @Test fun getDuration() {
+    assertEquals(2, vacation?.duration)
+  }
+
+  @Test fun getMode() {
+    assertEquals(FLIGHT, vacation?.mode)
+  }
+
+  @Test fun getCost() {
+    assertEquals(10000, vacation?.cost)
+  }
 }
