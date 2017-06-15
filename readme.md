@@ -6,7 +6,7 @@ Kotlin implementation of the effective java items from [Effective Java](https://
 ### Table of Contents
 
 1. [Static Factory Methods](#static-factory-methods)
-2. [Builder Pattern] (#builder-pattern)
+2. [Builder Pattern](#builder-pattern)
 
 --- 
 
