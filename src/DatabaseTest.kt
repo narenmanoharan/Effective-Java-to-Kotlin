@@ -1,14 +1,23 @@
 import org.junit.Test
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 
 /**
  * Created by Naren on 6/15/17.
  */
 class DatabaseTest {
-  @Test fun getVersion() {}
 
-  @Test fun bumpUpVersion() {}
+  private val db : Database = Database
 
-  @Test fun getInstance() {}
+  @Test fun getVersion() {
+    assertEquals(0.1, db.getVersion(), 0.1)
+  }
+
+  @Test fun bumpUpVersion() {
+    assertEquals(0.2, db.bumpUpVersion(), 0.1)
+  }
+
+  @Test fun getInstance() {
+    assertEquals(db, db.getInstance())
+  }
 }

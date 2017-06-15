@@ -1,7 +1,4 @@
-import Mode.BOAT
-import Mode.CAR
 import Mode.FLIGHT
-import Mode.TRAIN
 import org.junit.Before
 import org.junit.Test
 
