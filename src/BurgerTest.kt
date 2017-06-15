@@ -10,7 +10,7 @@ class BurgerTest {
 
   val burger: Burger = Burger.valueOf(10, cheese = true, pepperoni = true, pineapple = true)
 
-  @Test fun checkBurgerValue() {
+  g@Test fun checkBurgerValue() {
     assertEquals("Burger(size=10, cheese=true, pepperoni=true, pineapple=true)", burger.toString())
   }
 
