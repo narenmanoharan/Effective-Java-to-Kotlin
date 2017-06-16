@@ -6,23 +6,51 @@ import org.junit.Assert.*
  * Created by Naren on 6/16/17.
  */
 class PersonTest {
-  @Test fun getFName() {}
 
-  @Test fun getLName() {}
+  val naren: Person = Person("Narendra Kumar", "Manoharan", 23, 183)
 
-  @Test fun getAge() {}
+  var evilTwin: Person = naren.copy()
 
-  @Test fun setAge() {}
 
-  @Test fun getHeight() {}
+  @Test fun getFName() {
+    assertEquals("Narendra Kumar", naren.fName)
+  }
 
-  @Test fun setHeight() {}
+  @Test fun getLName() {
+    assertEquals("Manoharan", naren.lName)
+  }
 
-  @Test fun copy() {}
+  @Test fun getAge() {
+    assertEquals(23, naren.age)
+  }
 
-  @Test override fun toString() {}
+  @Test fun setAge() {
+    naren.age = 24
+    assertEquals(24, naren.age)
+  }
 
-  @Test override fun hashCode() {}
+  @Test fun getHeight() {
+    assertEquals(183, naren.height)
+  }
 
-  @Test fun equals() {}
+  @Test fun setHeight() {
+    naren.height = 185
+    assertEquals(185, naren.height)
+  }
+
+  @Test fun copy() {
+    assertEquals(naren.hashCode(), evilTwin.hashCode())
+  }
+
+  @Test fun testToString() {
+    assertEquals("Person(fName=Narendra Kumar, lName=Manoharan, age=23, height=183)", naren.toString())
+  }
+
+  @Test fun testHashCode() {
+    assertEquals(naren.hashCode(), evilTwin.hashCode())
+  }
+
+  @Test fun testEquals() {
+    assertTrue(naren == evilTwin)
+  }
 }
