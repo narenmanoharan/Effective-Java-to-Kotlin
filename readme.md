@@ -11,10 +11,15 @@ Kotlin implementation of the effective java items from [Effective Java](https://
 2. [Builder Pattern](#builder-pattern)
 3. [Singleton Pattern](#singleton-pattern)
 4. [Private Constructors](#private-constructors)
+5. [Avoid creating unnecessary objects](#avoid-creating-unnecessary-objects)
+6. [Eliminate Obsolete Object References](#eliminate-obsolete-object-references)
+7. [Avoid finalizers](#avoid-finalizers)
+8. [Overriding Equals](#overriding-equals)
+9. [Overriding Hashcode](#overriding-hashcode)
 
 --- 
 
-### Static Factory Methods
+## Static Factory Methods
 
 A simple static method that returns an instance of the class. Implemented in Kotlin using [Object declarations.](https://kotlinlang.org/docs/reference/object-declarations.html)
 
@@ -42,7 +47,7 @@ A simple static method that returns an instance of the class. Implemented in Kot
 
 --
 
-### Builder Pattern
+## Builder Pattern
 
 This pattern is used when designing classes whose constructors may have more than a handful of parameters. They also simulate the behavior of named optional parameters which are available in Kotlin. 
 
@@ -52,7 +57,7 @@ In most cases you don't need to use builders in Kotlin because we have default a
 
 --
 
-### Singleton Pattern
+## Singleton Pattern
 
 Used in order to ensure a class only has one instance, and provide a global point of access to it. But this is mostly considered an Anti-pattern in the OOD community because of it's behavior in relation to the design principles.
 
@@ -75,7 +80,7 @@ Used in order to ensure a class only has one instance, and provide a global poin
 
 --
 
-### Non-instantiability using Private Constructors
+## Non-instantiability using Private Constructors
 
 In order to ensure non-instantiability of a class, a private constructor might come in handy. Using this we can make sure that we only instantiate the class when absolutely required using a factory or builder pattern.
 
@@ -90,6 +95,126 @@ In order to ensure non-instantiability of a class, a private constructor might c
 **[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Burger.kt)**
 
 --
+
+## Avoid creating unnecessary objects
+
+Be careful when creating objects to make sure to reuse objects when possible. This can be done by the use of the init method available in Kotlin to initialize an object whenever the class is initialized, rather than having it be created every time a method is called on an instance. This helps with better performance and memory consumption.
+
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Pizza.kt)**
+
+--
+
+## Eliminate Obsolete Object References
+
+Memory leakage is a serious issue that we need take care of in both Java and Kotlin which can easily lead to an OutOfMemoryError if not carefully dealt with. Also it might adversely affect the performance of the program by increased garbage collector activity or increased memory footprint. 
+
+This can be nulling out references that you don't need anymore. But this should be an exception rather than a norm.
+
+#### Sources of Memory leaks
+
+- Whenever a class manages its own memory, the programmer should be alert for memory leaks
+- Memory leaks in Cache
+- Another source is listeners and other callbacks (Specifically callbacks in Android whether be it Asynctasks or OnClickListeners)
+
+--
+
+## Avoid finalizers
+
+Finalize() in Kotlin which is usually called with Java is not guaranteed to be called when declared and so anything time sensitive should never be done in them. They are unpredictable and exhibit erratic behavior. Finalize is not synonymous to destructors in C++. Also System.gc and System.runFinalization.
+
+Also there is severe performance penalty for using finalizers.  
+
+--
+
+## Overriding Equals
+
+Don't override the equals method if 
+
+- Each instance of the class is inherently unique
+- Superclass has overridden equals method
+- When the package is private 
+
+```
+  override fun equals(other: Any?): Boolean {
+        throw AssertionError() // Method is never called}
+```
+
+Override the equals method if
+
+- Logical equality is important
+
+Equals method implements an equivalence relation:
+
+1. **Reflexive**: For any non-null reference value x,
+
+    ` x.equals(x)` must return `true`
+    
+2. **Symmetric**: For any non-null reference values x and y,
+
+    `x.equals(y)` must return `true` if and only if `y.equals(x)` returns `true`.
+    
+3. **Transitive**: For any non-null reference values x, y, z, 
+
+    `if x.equals(y)` returns `true` and `y.equals(z)` returns `true`,               then `x.equals(z)` must return `true`.
+    
+4. **Consistent**: For any non-null reference values x and y, 
+
+    multiple invocations of `x.equals(y)` consistently return `true` or consistently return `false`, provided no information used in equals comparisons on the objects is modified.
+
+5. For any non-null reference value x, 
+
+    `x.equals(null)` must return `false`.
+    
+
+Do not write equals method on unreliable resources.
+
+
+#### Steps to write a high quality `equals` method
+
+- Use the `===` operator to check if the argument is a reference to the object
+- Check if the `javaclass` of both the objects are the same
+- Cast the argument to the correct type
+- Every significant field in the class needs to be checked for logical equality to the corresponding field of the object
+- Check if the method obeys symmetry, transitivity and if it is consistent.
+- Also make sure to override the hashcode method.
+
+
+**In Kotlin, we get all this for free using the `data class` provided by default**
+    
+**[Code available here]()**
+
+--
+
+## Overriding Hashcode
+
+There is a rule to always override `hashCode` whenever `equals` is overridden. If this is not obeyed, then this would result in a violation of the contract of the Object.hashCode method and will prevent the class from functioning properly in conjunction with all the has-based collections.
+
+The vital part of writing the `hashCode` method relies on the fact that **equal objects must have equal hash codes**. A good hashCode should always produce different hashcodes for unequal objects.
+
+#### Steps to write a high quality `hashCode` method
+
+- Store a constant non zero value calculated from any attribute of the class using it's superclass method
+
+```
+var result = fName.hashCode()
+```
+
+- For each significant field f (All field defined in the `equals` method), do the following
+
+    - Compute an `Int hashCode c` for the field
+        
+        - Boolean: `f ?: 0`
+        - Byte, Char, Short, Float, Double, Int: `f.toInt()`
+        - Long: `(f ^ (f >>> 32)).toInt()`
+        - The class's `equals` method compares the field by recursively invoking equals and invoke the `hashCode` on the field.
+        - Array: Each element is treated as a separate field by applying the rules recursively.
+
+**In Kotlin, we get all this for free using the `data class` provided by default**
+
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Person.kt)**
+
+--
+
 
 
 
