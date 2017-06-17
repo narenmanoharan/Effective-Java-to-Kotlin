@@ -243,12 +243,53 @@ Cloning in kotlin is as easy as calling the copy method from the data class. The
 
 This method provided by Kotlin itself, satisfies all the requirements that are requested by the contract of implementing the Cloneable interface in Java to expose the protected clone() method in the object class.
 
-And in this method we could also provide named arguments as to what should be different from the data class it is cloned from.
+And in this method we could also provide named arguments as to what should be different from the data class it is cloned from. The data class in kotlin uses the copy constructor approach from java to implement it's cloning facility.
+
+It uses a copy constructor and a static factory which provides a lot more robustness over implementing the cloneable interface. Such as
+
+- Doesn't rely on a risk-prone extralinguistic object creation mechanism
+- Doesn't demand unenforceable adherence to not-so documented conventions
+- Doesn't conflict with vals
+- Doesn't throw checked exceptions
+- Doesn't require casts
+- Add interface like functionality since Cloneable doesn't have a public `clone` method
+
 
 **[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Sheep.kt)**
 
 -- 
 
+## Implementing Comparable and Using Comparators
+
+Implementing the comparable interface in the class provides a "natural" way of ordering the objects created by the class. The `compareTo` method provided by the comparable interface is used to sort the collection in the way specified. The general contract of the `compareTo` method is similar to that of the `equals` method. 
+
+- Compare `this` object with the other object provided
+- Returns a negative integer if the object is less than the object it is compared to.
+- Returns zero if they are equal
+- Returns a positive integer if the object is greater than the object it is compared to.
+- Throws `ClassCastException` if the specified object's type prevents it from being compared to this object.
+
+The contract specification goes as follows
+
+```
+- x.compareTo(y) == -y.compareTo(x) for all x and y
+- Transitivity: (x.compareTo(y) > 0 && y.compareTo(z) > 0)
+- if x.compareTo(y) == 0, then x.compareTo(z) == y.compareTo(z) 
+- Recommendation: (x.compareTo(y) == 0) == (x.equals(y))
+
+```
+
+#### `compareBy` using Comparator
+
+The `compareBy` function available in Kotlin is used to sort an object with multiple fields with the use of comparators and method references. This creates a comparator using the sequence of functions to calculate a result of comparison. This is called in the sequence that we need the list to be ordered.
+
+```
+val sortedListOfMovies: List<Movies> = list.sortedWith(compareBy({ it.rating }, { it.year }))
+```
+
+**[Code available here]()**
+
+-- 
 
 
 
