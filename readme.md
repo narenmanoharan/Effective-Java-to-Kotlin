@@ -16,6 +16,8 @@ Kotlin implementation of the effective java items from [Effective Java](https://
 7. [Avoid finalizers](#avoid-finalizers)
 8. [Overriding Equals](#overriding-equals)
 9. [Overriding Hashcode](#overriding-hashcode)
+10. [Overriding toString](#overriding-tostring)
+11. [Cloning Objects](#cloning-objects)
 
 --- 
 
@@ -181,7 +183,7 @@ Do not write equals method on unreliable resources.
 
 **In Kotlin, we get all this for free using the `data class` provided by default**
     
-**[Code available here]()**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Person.kt)**
 
 --
 
@@ -214,6 +216,39 @@ var result = fName.hashCode()
 **[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Person.kt)**
 
 --
+
+## Overriding toString
+
+A good `toString` implementation makes the class much more pleasant to use. It clearly displays the most significant information required in a class object. If the `toString` method is not overridden, then printing the object would returns the class name followed by the unsigned hexadecimal representation of the hashcode.
+
+If there is a specific format of the `toString` then mention them in the documentation. If not then make a specific comment about the `toString` method. 
+
+Also provide programmatic access to all the information contained in the value returned by `toString`.
+
+**In Kotlin, we get all this for free using the `data class` provided by default**
+
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Person.kt)**
+
+--
+
+## Cloning Objects
+
+Cloning in kotlin is as easy as calling the copy method from the data class. The method provided by the data class offers the following:
+
+```
+- x.copy() !== x
+- x.javaClass == x.copy().javaClass
+- x.copy().equals(x)
+```
+
+This method provided by Kotlin itself, satisfies all the requirements that are requested by the contract of implementing the Cloneable interface in Java to expose the protected clone() method in the object class.
+
+And in this method we could also provide named arguments as to what should be different from the data class it is cloned from.
+
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Sheep.kt)**
+
+-- 
+
 
 
 
