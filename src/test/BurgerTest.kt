@@ -14,23 +14,23 @@ class BurgerTest {
   val burger: main.Burger = main.Burger.Companion.valueOf(10, cheese = true, pepperoni = true,
       pineapple = true)
 
-  @org.junit.Test fun checkBurgerValue() {
+  @Test fun checkBurgerValue() {
     assertEquals("main.Burger(size=10, cheese=true, pepperoni=true, pineapple=true)", burger.toString())
   }
 
-  @org.junit.Test fun checkSizeValue() {
+  @Test fun checkSizeValue() {
     assertEquals(10, burger.size)
   }
 
-  @org.junit.Test fun checkCheeseValue() {
+  @Test fun checkCheeseValue() {
     assertEquals(true, burger.cheese)
   }
 
-  @org.junit.Test fun checkPepperoniValue() {
+  @Test fun checkPepperoniValue() {
     assertEquals(true, burger.pepperoni)
   }
 
-  @org.junit.Test fun checkPineappleValue() {
+  @Test fun checkPineappleValue() {
     assertEquals(true, burger.pineapple)
   }
 

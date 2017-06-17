@@ -12,7 +12,7 @@ class CarTest {
 
   val car : main.Car = main.Car.Companion.valueOf("M3", BMW, 260, 80, 160, 2, 14)
 
-  @org.junit.Test fun checkCarValue() {
+  @Test fun checkCarValue() {
     assertEquals("main.Car(model='M3', brand=BMW, maxSpeed=260, hp=80, torque=160, seating=2, mileage=14)", car.toString())
   }
 

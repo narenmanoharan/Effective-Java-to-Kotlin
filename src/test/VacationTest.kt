@@ -24,31 +24,31 @@ class VacationTest {
       }
   }
 
-  @org.junit.Test fun getDestination() {
+  @Test fun getDestination() {
     assertEquals("SEYCHELLES", vacation?.destination)
   }
 
-  @org.junit.Test fun getDate() {
+  @Test fun getDate() {
     assertEquals(20, vacation?.date)
   }
 
-  @org.junit.Test fun getMonth() {
+  @Test fun getMonth() {
     assertEquals(9, vacation?.month)
   }
 
-  @org.junit.Test fun getYear() {
+  @Test fun getYear() {
     assertEquals(2018, vacation?.year)
   }
 
-  @org.junit.Test fun getDuration() {
+  @Test fun getDuration() {
     assertEquals(2, vacation?.duration)
   }
 
-  @org.junit.Test fun getMode() {
+  @Test fun getMode() {
     assertEquals(main.Mode.FLIGHT, vacation?.mode)
   }
 
-  @org.junit.Test fun getCost() {
+  @Test fun getCost() {
     assertEquals(10000, vacation?.cost)
   }
 }

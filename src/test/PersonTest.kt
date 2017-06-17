@@ -15,49 +15,49 @@ class PersonTest {
   var evilTwin: main.Person = naren.copy()
 
 
-  @org.junit.Test fun getFName() {
+  @Test fun getFName() {
     assertEquals("Narendra Kumar", naren.fName)
   }
 
-  @org.junit.Test fun getLName() {
+  @Test fun getLName() {
     assertEquals("Manoharan", naren.lName)
   }
 
-  @org.junit.Test fun getAge() {
+  @Test fun getAge() {
     assertEquals(23, naren.age)
   }
 
-  @org.junit.Test fun setAge() {
+  @Test fun setAge() {
     naren.age = 24
     assertEquals(24, naren.age)
   }
 
-  @org.junit.Test fun getHeight() {
+  @Test fun getHeight() {
     assertEquals(183, naren.height)
   }
 
-  @org.junit.Test fun setHeight() {
+  @Test fun setHeight() {
     naren.height = 185
     assertEquals(185, naren.height)
   }
 
-  @org.junit.Test fun copy() {
+  @Test fun copy() {
     assertEquals(naren.hashCode(), evilTwin.hashCode())
   }
 
-  @org.junit.Test fun testToString() {
+  @Test fun testToString() {
     assertEquals("Person(fName=Narendra Kumar, lName=Manoharan, age=23, height=183)", naren.toString())
   }
 
-  @org.junit.Test fun testHashCode() {
+  @Test fun testHashCode() {
     assertEquals(naren.hashCode(), evilTwin.hashCode())
   }
 
-  @org.junit.Test fun testEquals() {
+  @Test fun testEquals() {
     assertTrue(naren == evilTwin)
   }
 
-  @org.junit.Test fun testNotTheSame() {
+  @Test fun testNotTheSame() {
     assertFalse(naren === evilTwin)
   }
 }
