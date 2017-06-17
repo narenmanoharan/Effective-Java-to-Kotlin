@@ -53,4 +53,8 @@ class PersonTest {
   @Test fun testEquals() {
     assertTrue(naren == evilTwin)
   }
+
+  @Test fun testNotTheSame() {
+    assertFalse(naren === evilTwin)
+  }
 }
