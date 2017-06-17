@@ -1,3 +1,6 @@
+package test
+
+import main.Database
 import org.junit.Test
 
 import org.junit.Assert.assertEquals
@@ -10,14 +13,14 @@ class DatabaseTest {
   private val db : Database = Database
 
   @Test fun getVersion() {
-    assertEquals(0.1, db.getVersion(), 0.1)
+    assertEquals(0.1, Database.getVersion(), 0.1)
   }
 
   @Test fun bumpUpVersion() {
-    assertEquals(0.2, db.bumpUpVersion(), 0.1)
+    assertEquals(0.2, Database.bumpUpVersion(), 0.1)
   }
 
   @Test fun getInstance() {
-    assertEquals(db, db.getInstance())
+    assertEquals(db, Database.getInstance())
   }
 }

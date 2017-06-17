@@ -1,3 +1,5 @@
+package main
+
 /**
  * Created by Naren on 6/16/17.
  */
@@ -7,7 +9,7 @@ class Sheep(val name: String, val age: Int) : Cloneable {
 
   @Throws(CloneNotSupportedException::class)
   public override fun clone(): Any {
-    return super.clone() as Sheep
+    return super.clone() as main.Sheep
   }
 
 }

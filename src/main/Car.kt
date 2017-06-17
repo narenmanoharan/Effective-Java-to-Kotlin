@@ -1,3 +1,5 @@
+package main
+
 /**
  * Created by Naren on 6/14/17.
  */
@@ -6,7 +8,7 @@
 class Car
 
 private constructor(private val model: String,
-    private val brand: Brand,
+    private val brand: main.Brand,
     private val maxSpeed: Int? ,
     private val hp: Int?,
     private val torque: Int?,
@@ -16,18 +18,18 @@ private constructor(private val model: String,
   companion object {
 
     fun valueOf(model: String,
-                brand: Brand,
+                brand: main.Brand,
                 maxSpeed: Int?,
                 hp: Int?,
                 torque: Int?,
                 seating: Int?,
-                mileage: Int?): Car {
-      return Car(model, brand, maxSpeed, hp, torque, seating, mileage)
+                mileage: Int?): main.Car {
+      return main.Car(model, brand, maxSpeed, hp, torque, seating, mileage)
     }
   }
 
   override fun toString(): String {
-    return "Car(model='$model', brand=$brand, maxSpeed=$maxSpeed, hp=$hp, torque=$torque, seating=$seating, mileage=$mileage)"
+    return "main.Car(model='$model', brand=$brand, maxSpeed=$maxSpeed, hp=$hp, torque=$torque, seating=$seating, mileage=$mileage)"
   }
 }
 

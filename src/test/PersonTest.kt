@@ -1,3 +1,6 @@
+package test
+
+import main.Person
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -7,54 +10,54 @@ import org.junit.Assert.*
  */
 class PersonTest {
 
-  val naren: Person = Person("Narendra Kumar", "Manoharan", 23, 183)
+  val naren: main.Person = main.Person("Narendra Kumar", "Manoharan", 23, 183)
 
-  var evilTwin: Person = naren.copy()
+  var evilTwin: main.Person = naren.copy()
 
 
-  @Test fun getFName() {
+  @org.junit.Test fun getFName() {
     assertEquals("Narendra Kumar", naren.fName)
   }
 
-  @Test fun getLName() {
+  @org.junit.Test fun getLName() {
     assertEquals("Manoharan", naren.lName)
   }
 
-  @Test fun getAge() {
+  @org.junit.Test fun getAge() {
     assertEquals(23, naren.age)
   }
 
-  @Test fun setAge() {
+  @org.junit.Test fun setAge() {
     naren.age = 24
     assertEquals(24, naren.age)
   }
 
-  @Test fun getHeight() {
+  @org.junit.Test fun getHeight() {
     assertEquals(183, naren.height)
   }
 
-  @Test fun setHeight() {
+  @org.junit.Test fun setHeight() {
     naren.height = 185
     assertEquals(185, naren.height)
   }
 
-  @Test fun copy() {
+  @org.junit.Test fun copy() {
     assertEquals(naren.hashCode(), evilTwin.hashCode())
   }
 
-  @Test fun testToString() {
+  @org.junit.Test fun testToString() {
     assertEquals("Person(fName=Narendra Kumar, lName=Manoharan, age=23, height=183)", naren.toString())
   }
 
-  @Test fun testHashCode() {
+  @org.junit.Test fun testHashCode() {
     assertEquals(naren.hashCode(), evilTwin.hashCode())
   }
 
-  @Test fun testEquals() {
+  @org.junit.Test fun testEquals() {
     assertTrue(naren == evilTwin)
   }
 
-  @Test fun testNotTheSame() {
+  @org.junit.Test fun testNotTheSame() {
     assertFalse(naren === evilTwin)
   }
 }

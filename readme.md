@@ -45,7 +45,7 @@ A simple static method that returns an instance of the class. Implemented in Kot
 - getType
 - newType
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Car.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Car.kt)**
 
 --
 
@@ -55,7 +55,7 @@ This pattern is used when designing classes whose constructors may have more tha
 
 In most cases you don't need to use builders in Kotlin because we have default and named arguments. But, it is nice to have.
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Vacation.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Vacation.kt)**
 
 --
 
@@ -78,7 +78,7 @@ Used in order to ensure a class only has one instance, and provide a global poin
 - They violate the single responsibility principle: by virtue of the fact that they control their own creation and lifecycle.
 - Produces tightly coupled code.
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Database.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Database.kt)**
 
 --
 
@@ -94,7 +94,7 @@ In order to ensure non-instantiability of a class, a private constructor might c
     - Static-methods-only (utility) class
     - Constants-only class
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Burger.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Burger.kt)**
 
 --
 
@@ -102,7 +102,7 @@ In order to ensure non-instantiability of a class, a private constructor might c
 
 Be careful when creating objects to make sure to reuse objects when possible. This can be done by the use of the init method available in Kotlin to initialize an object whenever the class is initialized, rather than having it be created every time a method is called on an instance. This helps with better performance and memory consumption.
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Pizza.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Pizza.kt)**
 
 --
 
@@ -178,12 +178,12 @@ Do not write equals method on unreliable resources.
 - Cast the argument to the correct type
 - Every significant field in the class needs to be checked for logical equality to the corresponding field of the object
 - Check if the method obeys symmetry, transitivity and if it is consistent.
-- Also make sure to override the hashcode method.
+- Also make sure to override the `hashCode` method.
 
 
 **In Kotlin, we get all this for free using the `data class` provided by default**
     
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Person.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Person.kt)**
 
 --
 
@@ -213,7 +213,7 @@ var result = fName.hashCode()
 
 **In Kotlin, we get all this for free using the `data class` provided by default**
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Person.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Person.kt)**
 
 --
 
@@ -227,7 +227,7 @@ Also provide programmatic access to all the information contained in the value r
 
 **In Kotlin, we get all this for free using the `data class` provided by default**
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Person.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Person.kt)**
 
 --
 
@@ -245,7 +245,7 @@ This method provided by Kotlin itself, satisfies all the requirements that are r
 
 And in this method we could also provide named arguments as to what should be different from the data class it is cloned from.
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/Sheep.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Sheep.kt)**
 
 -- 
 
