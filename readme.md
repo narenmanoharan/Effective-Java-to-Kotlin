@@ -18,6 +18,8 @@ Kotlin implementation of the effective java items from [Effective Java](https://
 9. [Overriding Hashcode](#overriding-hashcode)
 10. [Overriding toString](#overriding-tostring)
 11. [Cloning Objects](#cloning-objects)
+12. [Implementing Comparable and Using Comparators](#implementing-comparable-and-using-comparators)
+13. [Class and Member accessibility minimization](#class-and-member-accessibility-minimization)
 
 --- 
 
@@ -284,13 +286,43 @@ The contract specification goes as follows
 The `compareBy` function available in Kotlin is used to sort an object with multiple fields with the use of comparators and method references. This creates a comparator using the sequence of functions to calculate a result of comparison. This is called in the sequence that we need the list to be ordered.
 
 ```
+// Using the it operator
 val sortedListOfMovies: List<Movies> = list.sortedWith(compareBy({ it.rating }, { it.year }))
+
+// Using method references 
+val sortedListOfMovies: List<Movie> = moviesList.sortedWith(compareBy(Movie::rating, Movie::year))
 ```
 
 **[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Movie.kt)**
 
 -- 
 
+## Class and Member accessibility minimization
 
+#### Rule of thumb: Make each class or member as inaccessible as possible.
+
+Kotlin helps in this regard by making every class uninheritable by default. So, in order to make a class support inheritance, we need to mention `open class` to enable it.
+
+Also instance fields should always be private and preferred to be immutable to make sure that it is thread-safe.
+
+And there are four specific access specifiers
+
+1. private
+2. package-private
+3. protected
+4. public
+
+#### Dealing with arrays and Static Fields
+
+When dealing with arrays in accessor fields make sure that  you either return a copy of the array or an immutableList that cannot be changed.
+It is important that the user does not tamper with the references.
+
+Ensure that the Public API that you build has only constant static fields as the only available public fields. 
+
+The data class in kotlin provides us with all the necessary tools under the hood to achieve all this with just the keyword.
+
+**[Code available here]()**
+
+-- 
 
 
