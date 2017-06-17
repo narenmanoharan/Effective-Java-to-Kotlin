@@ -287,7 +287,7 @@ The `compareBy` function available in Kotlin is used to sort an object with mult
 val sortedListOfMovies: List<Movies> = list.sortedWith(compareBy({ it.rating }, { it.year }))
 ```
 
-**[Code available here]()**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Movie.kt)**
 
 -- 
 
