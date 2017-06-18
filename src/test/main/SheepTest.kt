@@ -1,5 +1,7 @@
 package test
 
+import main.Doggo
+import main.Sheep
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -9,14 +11,14 @@ import org.junit.Test
  */
 class SheepTest {
 
-  val sheep: main.Sheep = main.Sheep("Black", 10)
+  val sheep: Sheep = Sheep("Black", 10)
 
-  val doggo: main.Doggo = main.Doggo("Golden", 2)
+  val doggo: Doggo = Doggo("Golden", 2)
 
-  val goodDoogo: main.Doggo = doggo.copy()
+  val goodDoogo: Doggo = doggo.copy()
 
   @Test fun clone() {
-    val evilSheep: main.Sheep = sheep.clone() as main.Sheep
+    val evilSheep: Sheep = sheep.clone() as main.Sheep
     assertEquals(sheep.name, evilSheep.name)
     assertEquals(sheep.age, evilSheep.age)
   }

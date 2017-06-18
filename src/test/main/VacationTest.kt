@@ -12,10 +12,10 @@ import org.junit.Assert.*
  */
 class VacationTest {
 
-  var vacation : main.Vacation? = null
+  var vacation : Vacation? = null
 
-  @org.junit.Before fun setUp() {
-      vacation = main.Vacation.Companion.build(mode = FLIGHT, cost = 10000) {
+  @Before fun setUp() {
+      vacation = Vacation.Companion.build(mode = FLIGHT, cost = 10000) {
         destination = "SEYCHELLES"
         date = 20
         month = 9
@@ -51,4 +51,16 @@ class VacationTest {
   @Test fun getCost() {
     assertEquals(10000, vacation?.cost)
   }
+
+  @Test fun build() {
+    vacation = Vacation.Companion.build(mode = FLIGHT, cost = 20000) {
+      destination = "SEYCHELLES"
+      date = 20
+      month = 9
+      year = 2019
+      duration = 22
+    }
+    assertEquals(22, vacation?.duration)
+  }
+
 }

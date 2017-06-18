@@ -10,9 +10,9 @@ import org.junit.Assert.*
  */
 class PersonTest {
 
-  val naren: main.Person = main.Person("Narendra Kumar", "Manoharan", 23, 183)
+  val naren: Person = Person("Narendra Kumar", "Manoharan", 23, 183)
 
-  var evilTwin: main.Person = naren.copy()
+  var evilTwin: Person = naren.copy()
 
 
   @Test fun getFName() {

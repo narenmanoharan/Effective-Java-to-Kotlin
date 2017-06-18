@@ -1,5 +1,8 @@
 package test
 
+import main.Pizza
+import main.PizzaMaker
+import main.Toppings
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -8,12 +11,12 @@ import org.junit.Test
  */
 class PizzaTest {
 
-  val toppings: List<main.Toppings> = listOf(main.Toppings.Pineapple, main.Toppings.Chicken,
-      main.Toppings.Onions, main.Toppings.BellPeppers, main.Toppings.Tomato)
+  val toppings: List<Toppings> = listOf(Toppings.Pineapple, Toppings.Chicken,
+      Toppings.Onions, Toppings.BellPeppers, Toppings.Tomato)
 
-  val pizza: main.Pizza = main.Pizza(12, toppings)
+  val pizza: Pizza = Pizza(12, toppings)
 
-  val newPizzaMaker: main.PizzaMaker = main.PizzaMaker.Companion.getInstance(heat = 500, size = 20)
+  val newPizzaMaker: PizzaMaker = PizzaMaker.Companion.getInstance(heat = 500, size = 20)
 
   @Test fun makePizza() {
     assertEquals("main.Pizza (Number = 12, main.Toppings = [Pineapple, Chicken, Onions, BellPeppers, Tomato])", pizza.makePizza())
@@ -43,4 +46,9 @@ class PizzaTest {
   @Test fun getSize() {
     assertEquals(20, newPizzaMaker.size)
   }
+
+  @Test fun testToString() {
+    assertEquals("main.Pizza(Number=12, toppings=[Pineapple, Chicken, Onions, BellPeppers, Tomato])", pizza.toString())
+  }
+
 }

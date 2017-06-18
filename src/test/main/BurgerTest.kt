@@ -9,9 +9,9 @@ import org.junit.Test
  */
 class BurgerTest {
 
-//  val burger: main.Burger = main.Burger(10)  Does not work
+//  val burger: Burger = Burger(10)  Does not work
 
-  val burger: main.Burger = main.Burger.Companion.valueOf(10, cheese = true, pepperoni = true,
+  val burger: Burger = Burger.Companion.valueOf(10, cheese = true, pepperoni = true,
       pineapple = true)
 
   @Test fun checkBurgerValue() {
