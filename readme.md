@@ -25,18 +25,24 @@ Item 7: [Avoid finalizers](#avoid-finalizers)
 #### 2. Methods common to all objects
 
 Item 8: [Overriding Equals](#overriding-equals)
+
 Item 9: [Overriding Hashcode](#overriding-hashcode)
+
 Item 10: [Overriding toString](#overriding-tostring)
+
 Item 11: [Cloning Objects](#cloning-objects)
+
 Item 12: [Implementing Comparable and Using Comparators](#implementing-comparable-and-using-comparators)
 
 #### 3. Classes and Interfaces
 
 Item 13: [Class and Member accessibility minimization](#class-and-member-accessibility-minimization)
+
 Item 14: [Accessor Methods/Properties] (#accessor-methods-properties)
+
 Item 15: [Minimize Mutability](#minimize-mutability)
+
 Item 16: [Favor Composition over Inheritance](#favor-composition-over-inheritance)
---- 
 
 ## Static Factory Methods
 
@@ -369,7 +375,7 @@ var setterWithAnnotation: Any? = null
 
 Also public classes should never expose mutable fields. If a class is package-private or is a private nested class, then exposing the properties is not a problem.
 
-**[Code available here]()**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/HeightConverter.kt)**
 
 -- 
 
