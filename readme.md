@@ -9,11 +9,17 @@ Kotlin implementation of the effective java items from [Effective Java](https://
 #### 1. Creating and Destroying objects
 
 Item 1: [Static Factory Methods](#static-factory-methods)
+
 Item 2: [Builder Pattern](#builder-pattern)
+
 Item 3: [Singleton Pattern](#singleton-pattern)
+
 Item 4: [Private Constructors](#private-constructors)
+
 Item 5: [Avoid creating unnecessary objects](#avoid-creating-unnecessary-objects)
+
 Item 6: [Eliminate Obsolete Object References](#eliminate-obsolete-object-references)
+
 Item 7: [Avoid finalizers](#avoid-finalizers)
 
 #### 2. Methods common to all objects
