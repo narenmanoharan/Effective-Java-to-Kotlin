@@ -4,23 +4,32 @@
 
 Kotlin implementation of the effective java items from [Effective Java](https://www.amazon.com/Effective-Java-2nd-Joshua-Bloch/dp/0321356683) book by Joshua Block.
 
+## Table of Contents
 
-### Table of Contents
+#### 1. Creating and Destroying objects
 
-1. [Static Factory Methods](#static-factory-methods)
-2. [Builder Pattern](#builder-pattern)
-3. [Singleton Pattern](#singleton-pattern)
-4. [Private Constructors](#private-constructors)
-5. [Avoid creating unnecessary objects](#avoid-creating-unnecessary-objects)
-6. [Eliminate Obsolete Object References](#eliminate-obsolete-object-references)
-7. [Avoid finalizers](#avoid-finalizers)
-8. [Overriding Equals](#overriding-equals)
-9. [Overriding Hashcode](#overriding-hashcode)
-10. [Overriding toString](#overriding-tostring)
-11. [Cloning Objects](#cloning-objects)
-12. [Implementing Comparable and Using Comparators](#implementing-comparable-and-using-comparators)
-13. [Class and Member accessibility minimization](#class-and-member-accessibility-minimization)
+Item 1: [Static Factory Methods](#static-factory-methods)
+Item 2: [Builder Pattern](#builder-pattern)
+Item 3: [Singleton Pattern](#singleton-pattern)
+Item 4: [Private Constructors](#private-constructors)
+Item 5: [Avoid creating unnecessary objects](#avoid-creating-unnecessary-objects)
+Item 6: [Eliminate Obsolete Object References](#eliminate-obsolete-object-references)
+Item 7: [Avoid finalizers](#avoid-finalizers)
 
+#### 2. Methods common to all objects
+
+Item 8: [Overriding Equals](#overriding-equals)
+Item 9: [Overriding Hashcode](#overriding-hashcode)
+Item 10: [Overriding toString](#overriding-tostring)
+Item 11: [Cloning Objects](#cloning-objects)
+Item 12: [Implementing Comparable and Using Comparators](#implementing-comparable-and-using-comparators)
+
+#### 3. Classes and Interfaces
+
+Item 13: [Class and Member accessibility minimization](#class-and-member-accessibility-minimization)
+Item 14: [Accessor Methods/Properties] (#accessor-methods-properties)
+Item 15: [Minimize Mutability](#minimize-mutability)
+Item 16: [Favor Composition over Inheritance](#favor-composition-over-inheritance)
 --- 
 
 ## Static Factory Methods
@@ -321,8 +330,60 @@ Ensure that the Public API that you build has only constant static fields as the
 
 The data class in kotlin provides us with all the necessary tools under the hood to achieve all this with just the keyword.
 
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Bear.kt)**
+
+-- 
+
+
+## Accessor Methods/Properties
+
+Do not use public properties which are mutable. This could adversely encapsulation. In Kotlin, properties function as default getters and setters meaning that we don't explicit have to method getters and setters for every field that we have in a class. But it helps to set custom getters and setters as follows. 
+
+```kotlin
+
+var integerRepresentation: String
+    get() = this.toInt()
+    set(value) {
+        setDataFromInt(value) // parses the string and assigns values to other properties
+    }
+
+``` 
+
+We can also make sure that the properties remain private using the following:
+
+```kotlin
+
+var setterVisibility: String = "abc"
+    private set // the setter is private and has the default implementation
+
+var setterWithAnnotation: Any? = null
+    @Inject set // annotate the setter with Inject
+
+```
+
+Also public classes should never expose mutable fields. If a class is package-private or is a private nested class, then exposing the properties is not a problem.
+
 **[Code available here]()**
 
 -- 
+
+## Minimize Mutability
+
+
+
+**[Code available here]()**
+
+-- 
+
+
+## Favor Composition over Inheritance
+
+
+
+**[Code available here]()**
+
+-- 
+
+
 
 
