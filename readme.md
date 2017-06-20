@@ -38,7 +38,7 @@ Item 12: [Implementing Comparable and Using Comparators](#implementing-comparabl
 
 Item 13: [Class and Member accessibility minimization](#class-and-member-accessibility-minimization)
 
-Item 14: [Accessor Methods/Properties] (#accessor-methods-properties)
+Item 14: [Accessor Methods/Properties](#accessor-methods-properties)
 
 Item 15: [Minimize Mutability](#minimize-mutability)
 
@@ -380,6 +380,7 @@ Also public classes should never expose mutable fields. If a class is package-pr
 -- 
 
 ## Minimize Mutability
+
 
 
 
