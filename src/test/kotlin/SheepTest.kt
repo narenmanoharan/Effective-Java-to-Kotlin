@@ -15,7 +15,7 @@ class SheepTest {
 
   val doggo: Doggo = Doggo("Golden", 2)
 
-  val goodDoogo: Doggo = doggo.copy()
+  val goodDoggo: Doggo = doggo.copy()
 
   @Test fun clone() {
     val evilSheep: Sheep = sheep.clone() as main.Sheep
@@ -32,7 +32,7 @@ class SheepTest {
   }
 
   @Test fun copy() {
-    assertEquals(goodDoogo, doggo)
+    assertEquals(goodDoggo, doggo)
   }
 
   @Test fun testToString() {
@@ -44,8 +44,8 @@ class SheepTest {
   }
 
   @Test fun equals() {
-    assertTrue(doggo == goodDoogo)
-    assertTrue(doggo !== goodDoogo)
-    assertTrue(doggo.javaClass == goodDoogo.javaClass)
+    assertTrue(doggo == goodDoggo)
+    assertTrue(doggo !== goodDoggo)
+    assertTrue(doggo.javaClass == goodDoggo.javaClass)
   }
 }
