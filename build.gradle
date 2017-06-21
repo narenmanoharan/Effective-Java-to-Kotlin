@@ -1,6 +1,8 @@
 group 'com.effective.kotlin'
 version '1.0-SNAPSHOT'
+
 apply plugin: 'java'
+apply plugin: 'jacoco'
 
 buildscript {
     ext.kotlin_version = '1.1.2-5'
@@ -26,3 +28,12 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+}
+
+check.dependsOn jacocoTestReport
