@@ -1,5 +1,6 @@
 group 'com.effective.kotlin'
 version '1.0-SNAPSHOT'
+apply plugin: 'java'
 
 buildscript {
     ext.kotlin_version = '1.1.2-5'
@@ -20,4 +21,6 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+
+    testCompile 'junit:junit:4.12'
 }
