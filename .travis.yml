@@ -1,6 +1,8 @@
 
 language: java
 sudo: false
+jdk:
+  - oraclejdk8
 
 script:
    - ./gradlew build test
