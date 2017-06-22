@@ -40,6 +40,13 @@ class ComplexTest {
     assertThat(deepCopy).isEqualTo(complex)
   }
 
+  @Test fun testNotEquals() {
+
+    val newComplex: Complex = Complex(1.0, 20.0)
+
+    assertThat(newComplex).isNotEqualTo(complex)
+  }
+
   @Test fun testHashCode() {
     assertThat(complex.hashCode())
         .isEqualTo(76546048)
