@@ -39,7 +39,7 @@ Item 12: [Implementing Comparable and Using Comparators](#implementing-comparabl
 
 Item 13: [Class and Member accessibility minimization](#class-and-member-accessibility-minimization)
 
-Item 14: [Accessor Methods/Properties](#accessor-methods-properties)
+Item 14: [Accessor Methods or Properties](#accessor-methods-or-properties)
 
 Item 15: [Minimize Mutability](#minimize-mutability)
 
@@ -69,7 +69,7 @@ A simple static method that returns an instance of the class. Implemented in Kot
 - getType
 - newType
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Car.kt)**
+**[Code available here](https:/github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Car.kt)**
 
 --
 
@@ -79,7 +79,7 @@ This pattern is used when designing classes whose constructors may have more tha
 
 In most cases you don't need to use builders in Kotlin because we have default and named arguments. But, it is nice to have.
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Vacation.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Vacation.kt)**
 
 --
 
@@ -102,7 +102,7 @@ Used in order to ensure a class only has one instance, and provide a global poin
 - They violate the single responsibility principle: by virtue of the fact that they control their own creation and lifecycle.
 - Produces tightly coupled code.
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Database.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Database.kt)**
 
 --
 
@@ -118,7 +118,7 @@ In order to ensure non-instantiability of a class, a private constructor might c
     - Static-methods-only (utility) class
     - Constants-only class
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Burger.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Burger.kt)**
 
 --
 
@@ -126,7 +126,7 @@ In order to ensure non-instantiability of a class, a private constructor might c
 
 Be careful when creating objects to make sure to reuse objects when possible. This can be done by the use of the init method available in Kotlin to initialize an object whenever the class is initialized, rather than having it be created every time a method is called on an instance. This helps with better performance and memory consumption.
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Pizza.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Pizza.kt)**
 
 --
 
@@ -204,10 +204,9 @@ Do not write equals method on unreliable resources.
 - Check if the method obeys symmetry, transitivity and if it is consistent.
 - Also make sure to override the `hashCode` method.
 
-
-**In Kotlin, we get all this for free using the `data class` provided by default**
+> **In Kotlin, we get all this for free using the `data class` provided by default**
     
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Person.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Person.kt)**
 
 --
 
@@ -216,6 +215,8 @@ Do not write equals method on unreliable resources.
 There is a rule to always override `hashCode` whenever `equals` is overridden. If this is not obeyed, then this would result in a violation of the contract of the Object.hashCode method and will prevent the class from functioning properly in conjunction with all the has-based collections.
 
 The vital part of writing the `hashCode` method relies on the fact that **equal objects must have equal hash codes**. A good hashCode should always produce different hashcodes for unequal objects.
+
+> **In Kotlin, we get all this for free using the `data class` provided by default**
 
 #### Steps to write a high quality `hashCode` method
 
@@ -235,9 +236,9 @@ var result = fName.hashCode()
         - The class's `equals` method compares the field by recursively invoking equals and invoke the `hashCode` on the field.
         - Array: Each element is treated as a separate field by applying the rules recursively.
 
-**In Kotlin, we get all this for free using the `data class` provided by default**
+> **In Kotlin, we get all this for free using the `data class` provided by default**
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Person.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Person.kt)**
 
 --
 
@@ -249,9 +250,9 @@ If there is a specific format of the `toString` then mention them in the documen
 
 Also provide programmatic access to all the information contained in the value returned by `toString`.
 
-**In Kotlin, we get all this for free using the `data class` provided by default**
+> **In Kotlin, we get all this for free using the `data class` provided by default**
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Person.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Person.kt)**
 
 --
 
@@ -279,7 +280,7 @@ It uses a copy constructor and a static factory which provides a lot more robust
 - Add interface like functionality since Cloneable doesn't have a public `clone` method
 
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Sheep.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Sheep.kt)**
 
 -- 
 
@@ -315,7 +316,7 @@ val sortedListOfMovies: List<Movies> = list.sortedWith(compareBy({ it.rating }, 
 val sortedListOfMovies: List<Movie> = moviesList.sortedWith(compareBy(Movie::rating, Movie::year))
 ```
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Movie.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Movie.kt)**
 
 -- 
 
@@ -343,12 +344,12 @@ Ensure that the Public API that you build has only constant static fields as the
 
 The data class in kotlin provides us with all the necessary tools under the hood to achieve all this with just the keyword.
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/Bear.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Bear.kt)**
 
 -- 
 
 
-## Accessor Methods/Properties
+## Accessor Methods or Properties
 
 Do not use public properties which are mutable. This could adversely encapsulation. In Kotlin, properties function as default getters and setters meaning that we don't explicit have to method getters and setters for every field that we have in a class. But it helps to set custom getters and setters as follows. 
 
@@ -376,25 +377,99 @@ var setterWithAnnotation: Any? = null
 
 Also public classes should never expose mutable fields. If a class is package-private or is a private nested class, then exposing the properties is not a problem.
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/HeightConverter.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/HeightConverter.kt)**
 
 -- 
 
 ## Minimize Mutability
 
+Immutability is an important concept in programming especially concurrent programming where multiple threads might try and access a specific resource. Making the resource immutable helps us make sure that the state isn't altered by any one thread and read incorrectly by other threads leading to a race condition.
+
+By making a class immutable we can control the number of state it could be in by creating objects corresponding each state either using constructors or static factories. Kotlin heavily places emphasis on making objects and classes immutable with the introduction of `val`.
+
+> **The general rule of thumb in Kotlin is to make every reference a val is possible.**
+
+Immutable classes in general are easier to design, implement and use than its mutable variants. They are also less error prone and more secure.
+
+Here are the rules to make a class immutable,
+
+- Do not provide method to mutate the objects state (Mutators)
+- Leave the class closed by default - To stop subclassing
+- All the properties should be `private vals`
+- Exclusive access to any mutable components - If the class has property that refers to mutable objects then make sure that it does not contain any reference to these objects. Always return a defensive copy in constructors, accessors and readObject methods.
+
+#### Advantages of Immutable Objects
+
+- Simple
+- Thread Safe (Require no synchronization)
+- Can be shared freely
+- No defensive copies needed in case of immutable objects (ImmutableList)
+- No copies of the same object needed (Do not provide clone method)
+- Share their internals as well (Just a property)
+- Great building blocks for other objects
 
 
+#### Disadvantages 
 
-**[Code available here]()**
+- Require separate objects for each distinct value
+- Serialization might be a problem
+
+#### Remember
+
+Before creating an instance make sure that the object is of the class type that we require and not a subclass of the same. If so, then make a defensive copy of the object to make sure it cannot be modified.
+
+Also implicitly making the object lazy also helps when trying to retrieve the property of the object multiple times.
+
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Complex.kt)**
 
 -- 
 
-
 ## Favor Composition over Inheritance
 
+In this module, we will discuss the effects of *implementation inheritance* which occurs when one class inherits another. The other case where *interface inheritance* takes place does not have any glaring holes that needs to be addressed.
 
 
-**[Code available here]()**
+> **Composition models the "has-a" relationship**
+
+> **Inheritance extends the "is-a" relationship**
+
+
+Only use inheritance when the class that you are extending has been documented for inheritance and does not have any self-use calls that haven't been documented. For all other cases, use composition instead.
+
+#### Problems with Implementation Inheritance
+
+Inheritance in general violates encapsulation. In order to create a subclass from a class, we need open up the class for extension which breaks encapsulation and many other SOLID principles that we talked about. Also inheritance creates dependence upon the superclass so as to make sure we propagate the change that takes place in the superclass. If a specific change is made to the superclass and it is not addressed in the subclasses then most of the time, the code breaks.
+
+This is why it is always important to **inherit only from classes which are documented for inheritance.** In these classes, we have all the information we know and a contract such that if a code breaking change is made, then we have the proper documentation to fix it as soon as possible.
+
+Also if we try and overcome these issues by just adding methods to the subclass without overriding them. Then we might run into an unfortunate error where there might be a new method added with the same name and different return type. This will result in a compilation error since JLS 8.4.8.3
+
+> **Composition:** The technique where we provide the new class with a reference to an instance of the superclass without extending it. Hence, the existing class becomes the component of the new one. 
+
+> **Forwarding:** Each instance method in the new class invokes the corresponding method *(Forwarding method)* on the contained instance of the existing class *(Forwarding Class)*.
+
+This is similar to the **decorator pattern** seen in the SOLID principles and Kotlin has inbuilt support for it.
+
+```kotlin
+
+class Rectangle(val width:Int, val height:Int) {
+    fun area() = width * height
+}
+
+class Window(val bounds:Rectangle) {
+    // Delegation
+    fun area() = bounds.area()
+}
+
+```
+
+> This type of forwarding is loosely known as Delegation
+
+Also these type of compositions are not suitable for Callback frameworks where objects references get passed around. In this case, the SELF reference of the class gets muddled and so it is better to avoid the wrapper class in such cases.
+
+> **Rule of thumb: Check if the following can be implemented using Composition before using Inheritance.**
+
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/CEO.kt)**
 
 -- 
 
