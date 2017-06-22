@@ -502,7 +502,7 @@ class Dog : Animal {
 ```
 
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/CEO.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Animal.kt)**
 
 -- 
 
