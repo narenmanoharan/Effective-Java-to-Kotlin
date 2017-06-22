@@ -1,5 +1,3 @@
-package main
-
 /**
  * Created by Naren on 6/15/17.
  */

@@ -1,5 +1,3 @@
-package main
-
 /**
  * Created by Naren on 6/15/17.
  */
@@ -11,12 +9,12 @@ class Burger private constructor(val size: Int,
                                  val pineapple: Boolean?) {
 
   companion object {
-    fun valueOf(size: Int, cheese: Boolean?, pepperoni: Boolean?, pineapple: Boolean?): main.Burger {
-      return main.Burger(size, cheese, pepperoni, pineapple)
+    fun valueOf(size: Int, cheese: Boolean?, pepperoni: Boolean?, pineapple: Boolean?): Burger {
+      return Burger(size, cheese, pepperoni, pineapple)
     }
   }
 
   override fun toString(): String {
-    return "main.Burger(size=$size, cheese=$cheese, pepperoni=$pepperoni, pineapple=$pineapple)"
+    return "Burger(size=$size, cheese=$cheese, pepperoni=$pepperoni, pineapple=$pineapple)"
   }
 }

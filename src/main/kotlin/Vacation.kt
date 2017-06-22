@@ -1,5 +1,3 @@
-package main
-
 /**
  * Created by Naren on 6/14/17.
  */
@@ -10,10 +8,10 @@ class Vacation (val destination: String?,
                 val month: Int?,
                 val year: Int?,
                 val duration: Int,
-                val mode: main.Mode,
+                val mode: Mode,
                 val cost: Int) {
 
-  private constructor(builder: main.Vacation.Builder) : this(builder.destination,
+  private constructor(builder: Vacation.Builder) : this(builder.destination,
                                                builder.date,
                                                builder.month,
                                                builder.year,
@@ -22,11 +20,11 @@ class Vacation (val destination: String?,
                                                builder.cost)
 
   companion object {
-    inline fun build(mode: main.Mode, cost: Int, block: main.Vacation.Builder.() -> Unit) = main.Vacation.Builder(
+    inline fun build(mode: Mode, cost: Int, block: Vacation.Builder.() -> Unit) = Vacation.Builder(
         mode, cost).apply(block).build()
   }
 
-  class Builder(val mode: main.Mode,val cost: Int) {
+  class Builder(val mode: Mode,val cost: Int) {
 
     var destination: String? = null
     var date: Int? = null
@@ -34,7 +32,7 @@ class Vacation (val destination: String?,
     var year: Int? = null
     var duration: Int = 0
 
-    fun build() = main.Vacation(this)
+    fun build() = Vacation(this)
   }
 }
 
