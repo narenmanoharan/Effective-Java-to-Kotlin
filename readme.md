@@ -1,6 +1,6 @@
 # Effective Kotlin
 
-[![codebeat badge](https://codebeat.co/badges/55c838ce-608d-4eeb-a706-36117513f1a7)](https://codebeat.co/projects/github-com-narenkmanoharan-effective-kotlin-master) [![Build Status](https://travis-ci.org/narenkmanoharan/Effective-Kotlin.svg?branch=master)](https://travis-ci.org/narenkmanoharan/Effective-Kotlin) [![codecov](https://codecov.io/gh/narenkmanoharan/Effective-Kotlin/branch/master/graph/badge.svg)](https://codecov.io/gh/narenkmanoharan/Effective-Kotlin)
+[![codebeat badge](https://codebeat.co/badges/55c838ce-608d-4eeb-a706-36117513f1a7)](https://codebeat.co/projects/github-com-narenkmanoharan-effective-kotlin-master) [![Build Status](https://travis-ci.org/narenkmanoharan/Effective-Kotlin.svg?branch=master)](https://travis-ci.org/narenkmanoharan/Effective-Kotlin) [![codecov](https://codecov.io/gh/narenkmanoharan/Effective-Kotlin/branch/master/graph/badge.svg)](https://codecov.io/gh/narenkmanoharan/Effective-Kotlin) [![CircleCI](https://circleci.com/gh/narenkmanoharan/Effective-Kotlin.svg?style=svg)](https://circleci.com/gh/narenkmanoharan/Effective-Kotlin) 
 
 
 Kotlin implementation of the effective java items from [Effective Java](https://www.amazon.com/Effective-Java-2nd-Joshua-Bloch/dp/0321356683) book by Joshua Block.
@@ -48,6 +48,8 @@ Item 16: [Favor Composition over Inheritance](#favor-composition-over-inheritanc
 Item 17: [Design and Document for inheritance or else prohibit it](#design-and-document-for-inheritance-or-else-prohibit-it)
 
 Item 18: [Prefer interfaces to abstract classes](#prefer-interfaces-to-abstract-classes)
+
+Item 19: [Use interface only to define types](#use-interface-only-to-define-types)
 
 ## Static Factory Methods
 
@@ -538,6 +540,14 @@ If abstract classes are used to implement inheritance in the first go, then we l
 Documenting such skeletal implementations are vital since they are designed for inheritance. Unlike in Java 7, Kotlin interfaces can have also have default implementations in them which take away the evolution advantage of the abstract class.
 
 > Both Java 8 and Kotlin add flexibility to interfaces with default method implementations which greatly add flexibility to the interfaces and help improve the functionality.
+
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Skeleton.kt)**
+
+-- 
+
+## Use interface only to define types
+
+
 
 **[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Skeleton.kt)**
 
