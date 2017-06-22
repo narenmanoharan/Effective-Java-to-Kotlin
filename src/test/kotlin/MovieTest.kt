@@ -1,4 +1,4 @@
-import main.Movie
+import Movie
 import org.junit.Test
 
 import org.junit.Assert.*

@@ -1,7 +1,4 @@
-package test
-
-import main.Mode.FLIGHT
-import main.Vacation
+import Mode.FLIGHT
 import org.junit.Before
 import org.junit.Test
 
@@ -15,7 +12,7 @@ class VacationTest {
   var vacation : Vacation? = null
 
   @Before fun setUp() {
-      vacation = Vacation.Companion.build(mode = FLIGHT, cost = 10000) {
+      vacation = Vacation.build(mode = FLIGHT, cost = 10000) {
         destination = "SEYCHELLES"
         date = 20
         month = 9
@@ -45,7 +42,7 @@ class VacationTest {
   }
 
   @Test fun getMode() {
-    assertEquals(main.Mode.FLIGHT, vacation?.mode)
+    assertEquals(Mode.FLIGHT, vacation?.mode)
   }
 
   @Test fun getCost() {
@@ -53,7 +50,7 @@ class VacationTest {
   }
 
   @Test fun build() {
-    vacation = Vacation.Companion.build(mode = FLIGHT, cost = 20000) {
+    vacation = Vacation.build(mode = FLIGHT, cost = 20000) {
       destination = "SEYCHELLES"
       date = 20
       month = 9

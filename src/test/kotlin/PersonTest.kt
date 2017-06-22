@@ -1,6 +1,3 @@
-package test
-
-import Person
 import org.junit.Test
 
 import org.junit.Assert.*

@@ -1,6 +1,5 @@
-import main.Bear
-import main.Food.Fish
-import main.Food.Shrimp
+import Food.Fish
+import Food.Shrimp
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

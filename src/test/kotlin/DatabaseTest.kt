@@ -1,6 +1,3 @@
-package test
-
-import main.Database
 import org.junit.Test
 
 import org.junit.Assert.assertEquals

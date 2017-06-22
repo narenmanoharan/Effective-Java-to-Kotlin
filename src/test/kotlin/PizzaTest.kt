@@ -1,8 +1,8 @@
-package test
-
-import main.Pizza
-import main.PizzaMaker
-import main.Toppings
+import Toppings.BellPeppers
+import Toppings.Chicken
+import Toppings.Onions
+import Toppings.Pineapple
+import Toppings.Tomato
 import org.junit.Assert.*
 import org.junit.Test
 
@@ -11,15 +11,15 @@ import org.junit.Test
  */
 class PizzaTest {
 
-  val toppings: List<Toppings> = listOf(Toppings.Pineapple, Toppings.Chicken,
-      Toppings.Onions, Toppings.BellPeppers, Toppings.Tomato)
+  val toppings: List<Toppings> = listOf(Pineapple, Chicken,
+      Onions, BellPeppers, Tomato)
 
   val pizza: Pizza = Pizza(12, toppings)
 
-  val newPizzaMaker: PizzaMaker = PizzaMaker.Companion.getInstance(heat = 500, size = 20)
+  val newPizzaMaker: PizzaMaker = PizzaMaker.getInstance(heat = 500, size = 20)
 
   @Test fun makePizza() {
-    assertEquals("main.Pizza (Number = 12, main.Toppings = [Pineapple, Chicken, Onions, BellPeppers, Tomato])", pizza.makePizza())
+    assertEquals("Pizza (Number = 12, Toppings = [Pineapple, Chicken, Onions, BellPeppers, Tomato])", pizza.makePizza())
   }
 
   @Test fun getNumber() {
@@ -31,12 +31,12 @@ class PizzaTest {
   }
 
   @Test fun getPizzaMaker() {
-    assertEquals("main.PizzaMaker(heat=400, size=4)", pizza.pizzaMaker.toString())
+    assertEquals("PizzaMaker(heat=400, size=4)", pizza.pizzaMaker.toString())
   }
 
   @Test fun setPizzaMaker() {
     pizza.pizzaMaker = newPizzaMaker
-    assertEquals("main.PizzaMaker(heat=500, size=20)", pizza.pizzaMaker.toString())
+    assertEquals("PizzaMaker(heat=500, size=20)", pizza.pizzaMaker.toString())
   }
 
   @Test fun getHeat() {
@@ -48,7 +48,7 @@ class PizzaTest {
   }
 
   @Test fun testToString() {
-    assertEquals("main.Pizza(Number=12, toppings=[Pineapple, Chicken, Onions, BellPeppers, Tomato])", pizza.toString())
+    assertEquals("Pizza(Number=12, toppings=[Pineapple, Chicken, Onions, BellPeppers, Tomato])", pizza.toString())
   }
 
 }

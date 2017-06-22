@@ -1,6 +1,3 @@
-package test
-
-import main.Burger
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -15,7 +12,7 @@ class BurgerTest {
       pineapple = true)
 
   @Test fun checkBurgerValue() {
-    assertEquals("main.Burger(size=10, cheese=true, pepperoni=true, pineapple=true)", burger.toString())
+    assertEquals("Burger(size=10, cheese=true, pepperoni=true, pineapple=true)", burger.toString())
   }
 
   @Test fun checkSizeValue() {

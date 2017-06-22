@@ -1,7 +1,5 @@
 import org.junit.Test
 
-import org.junit.Assert.*
-
 import com.google.common.truth.Truth.assertThat
 
 /**

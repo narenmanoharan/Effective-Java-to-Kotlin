@@ -1,7 +1,5 @@
-package main
-
-import main.Units.cm
-import main.Units.m
+import Units.cm
+import Units.m
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -32,20 +30,20 @@ class HeightConverterTest {
 
   @Test fun setFrom() {
     converter?.from = m
-    assertEquals(Units.m, converter?.from)
+    assertEquals(m, converter?.from)
   }
 
   @Test fun getFrom() {
-    assertEquals(Units.cm, converter?.from)
+    assertEquals(cm, converter?.from)
   }
 
   @Test fun setTo() {
     converter?.to = cm
-    assertEquals(Units.cm, converter?.to)
+    assertEquals(cm, converter?.to)
   }
 
   @Test fun getTo() {
-    assertEquals(Units.m, converter?.to)
+    assertEquals(m, converter?.to)
   }
 
   @Test fun getNewValue() {
