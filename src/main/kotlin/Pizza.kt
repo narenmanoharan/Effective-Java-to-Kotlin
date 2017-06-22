@@ -11,8 +11,7 @@ class Pizza(val number: Int, val toppings: List<Toppings>) {
   }
 
   fun makePizza() : String? {
-    val pizza : String? = pizzaMaker?.makePizza(number = number, toppings = toppings)
-    return pizza
+    return pizzaMaker?.makePizza(number = number, toppings = toppings)
   }
 
   override fun toString(): String {
