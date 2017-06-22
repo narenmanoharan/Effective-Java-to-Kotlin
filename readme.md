@@ -547,9 +547,35 @@ Documenting such skeletal implementations are vital since they are designed for 
 
 ## Use interface only to define types
 
+Interface should only be used to define *types* for the class which implements it. The interface should say something about the client instances which implement them.
 
+> An important anti-pattern which should be avoided is the **Constant Interface anti-pattern** (Poor use of interface)
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Skeleton.kt)**
+This might cause implementation detail to leak into the class's exported API. If a superclass implements the constants interface then all its subclasses are polluted by the constants in the interface.
+
+#### Best ways to implement constants
+
+- In an existing class or interface, just add them in the class or interface. *Eg. Integer (MAX_VALUE, MIN_VALUE)*
+
+- If the constants are best viewed as the members of an enum type them implement them as an enum class
+
+- Export them in a non-instantiable Utility class.
+
+```kotlin
+
+class TheNYTimesAPI {
+  companion object {
+    const val API_KEY = "bfa504d8afec47basdfsda7b3dab9201ddd"
+    const val BASE_URL = "https://api.nytimes.com/"
+    const val API_ENDPOINT = "/svc/search/v2/articlesearch.json"
+  }
+}
+
+```
+
+**Rule of thumb: Do not use interfaces to export constants**
+
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/TheNYTimes.kt)**
 
 -- 
 
