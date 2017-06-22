@@ -45,6 +45,8 @@ Item 15: [Minimize Mutability](#minimize-mutability)
 
 Item 16: [Favor Composition over Inheritance](#favor-composition-over-inheritance)
 
+Item 17: [Design and Document for inheritance or else prohibit it](#design-and-document-for-inheritance-or-else-prohibit-it)
+
 ## Static Factory Methods
 
 A simple static method that returns an instance of the class. Implemented in Kotlin using [Object declarations.](https://kotlinlang.org/docs/reference/object-declarations.html)
@@ -473,6 +475,36 @@ Also these type of compositions are not suitable for Callback frameworks where o
 
 -- 
 
+## Design and Document for inheritance or else prohibit it
+
+Inheriting a class that is not documented for inheritance will always result in broken and unmanageable code. As we saw in the previous module, documenting an `open class` with all the necessary information known to inherit the methods is vital to inheritance.
+
+In order to achieve proper documentation of a class for inheritance, the class should have the following
+
+- The class should document its self-use of overridable methods
+- Provide details into the internal workings of the protected methods which might be inherited
+- Test the classes by creating various subclasses
+- Constructors must not invoke overridable methods
+- Neither the clone nor readObject methods should be able to invoke the overridable methods directly or indirectly
+- Designing a class for inheritance, substantially limit what a class can do.
+
+Kotlin provides the `open class` operator to explicitly open a class for inheritance only when needed. And to add to that, in kotlin we need to `open fun` to open up the methods we need to override and `open val/var` to open up properties.
+
+```
+open class Animal {
+    ...
+}
+
+class Dog : Animal {
+    ...
+}
+
+```
+
+
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/CEO.kt)**
+
+-- 
 
 
 
