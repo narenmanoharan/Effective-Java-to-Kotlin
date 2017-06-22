@@ -1,6 +1,7 @@
 import Toppings.BellPeppers
 import Toppings.Chicken
 import Toppings.Onions
+import Toppings.Pepperoni
 import Toppings.Pineapple
 import Toppings.Tomato
 import org.junit.Assert.*
@@ -37,6 +38,10 @@ class PizzaTest {
   @Test fun setPizzaMaker() {
     pizza.pizzaMaker = newPizzaMaker
     assertEquals("PizzaMaker(heat=500, size=20)", pizza.pizzaMaker.toString())
+  }
+
+  @Test fun testMakePizzs() {
+    assertEquals("Pizza (Number = 2, Toppings = [Pineapple, Pepperoni])", pizza.pizzaMaker?.makePizza(number = 2, toppings = listOf(Pineapple, Pepperoni)))
   }
 
   @Test fun getHeat() {
