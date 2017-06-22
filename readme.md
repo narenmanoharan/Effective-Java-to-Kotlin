@@ -39,7 +39,7 @@ Item 12: [Implementing Comparable and Using Comparators](#implementing-comparabl
 
 Item 13: [Class and Member accessibility minimization](#class-and-member-accessibility-minimization)
 
-Item 14: [Accessor Methods or Properties](#accessor-methods-or-properties)
+Item 14: [Accessor Methods or Properties](#accessor-methods-or-properties)g
 
 Item 15: [Minimize Mutability](#minimize-mutability)
 
