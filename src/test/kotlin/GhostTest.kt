@@ -9,7 +9,8 @@ import com.google.common.truth.Truth.assertThat
  */
 class GhostTest {
 
-  var ghost: GhostImpl = GhostImpl()
+  val ghost: GhostImpl = GhostImpl()
+  val king: WhiteWalker = WhiteWalker()
 
   @Test fun walk() {
     assertThat(ghost.walk())
@@ -30,4 +31,26 @@ class GhostTest {
     assertThat(ghost.scare())
         .contains("Dark Clouds")
   }
+
+  @Test fun walkerWalk() {
+    assertThat(king.walk())
+        .contains("walk")
+  }
+
+  @Test fun walkerSwim() {
+    assertThat(king.swim())
+        .contains("swim")
+  }
+
+  @Test fun walkerCrawl() {
+    assertThat(king.crawl())
+        .contains("crawl")
+  }
+
+  @Test fun walkerScare() {
+    assertThat(king.scare())
+        .contains("scare")
+  }
+
+
 }

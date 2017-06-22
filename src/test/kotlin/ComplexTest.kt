@@ -8,6 +8,7 @@ import com.google.common.truth.Truth.assertThat
 
 class ComplexTest {
 
+  private val int: Int = 20
   private val complex: Complex = Complex(10.0, 20.0)
   private val newComplex: Complex = Complex(5.0, 2.0)
   private val resultAdd: Complex = complex.add(newComplex)
@@ -40,11 +41,24 @@ class ComplexTest {
     assertThat(deepCopy).isEqualTo(complex)
   }
 
-  @Test fun testNotEquals() {
-
+  @Test fun testRealNotEquals() {
     val newComplex: Complex = Complex(1.0, 20.0)
-
     assertThat(newComplex).isNotEqualTo(complex)
+  }
+
+  @Test fun testImaginaryNotEquals() {
+    val newComplex: Complex = Complex(10.0, 5.0)
+    assertThat(newComplex).isNotEqualTo(complex)
+  }
+
+  @Test fun testReferentialEquality() {
+    assertThat(complex)
+        .isEqualTo(complex)
+  }
+
+  @Test fun testClassEquals() {
+    assertThat(complex)
+        .isNotEqualTo(int)
   }
 
   @Test fun testHashCode() {

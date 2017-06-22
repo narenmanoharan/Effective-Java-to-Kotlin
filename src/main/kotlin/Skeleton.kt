@@ -48,3 +48,5 @@ class GhostImpl : AbstractGhost() {
   }
 
 }
+
+class WhiteWalker: Skeleton
