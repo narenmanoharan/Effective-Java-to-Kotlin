@@ -624,5 +624,36 @@ open class Rectangle(val length: Int, val width: Int) : Figure() {
 
 ## Use function literals to represent strategies
 
+With kotlin we have support for lambdas, higher order functions, domain specific delegates and function literals. This comes to our aid when implementing strategies or more specifically the Strategy pattern.
+
+> Define a family of algorithms, encapsulate each one, and make them interchangeable
+
+The introduction of first class functions which can help pass around behavior, just like we would pass objects around. This reduces the complexity of implementing the strategy pattern to a simple predicate or `when` condition statement. 
+
+```kotlin
+
+class Printer(val formatterStrategy: (String) -> String) {
+
+    fun printString(string: String) = println(formatterStrategy.invoke(string))
+    
+    //  fun printString(string: String): String = formatterStrategy(string)
+}
+
+val lowerCaseFormatter: (String) -> String = { it.toLowerCase() }
+
+val upperCaseFormatter = { it: String -> it.toUpperCase() }
+
+// Call the function using a printer instance
+
+val lowerCasePrinter: Printer = Printer(lowerCaseFormatter)
+
+val upperCasePrinter: Printer = Printer(upperCaseFormatter)
+
+```
+
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Discount.kt)**
+
+--
+
 
 
