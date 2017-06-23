@@ -39,7 +39,7 @@ Item 12: [Implementing Comparable and Using Comparators](#implementing-comparabl
 
 Item 13: [Class and Member accessibility minimization](#class-and-member-accessibility-minimization)
 
-Item 14: [Accessor Methods or Properties](#accessor-methods-or-properties)g
+Item 14: [Accessor Methods or Properties](#accessor-methods-or-properties)
 
 Item 15: [Minimize Mutability](#minimize-mutability)
 
@@ -50,6 +50,10 @@ Item 17: [Design and Document for inheritance or else prohibit it](#design-and-d
 Item 18: [Prefer interfaces to abstract classes](#prefer-interfaces-to-abstract-classes)
 
 Item 19: [Use interface only to define types](#use-interface-only-to-define-types)
+
+Item 20: [Prefer class hierarchies to tagged classes](#prefer-class-hierarchies-to-tagged-classes)
+
+Item 21: [Use function literals to represent strategies](#use-function-literals-to-represent-strategies)
 
 ## Static Factory Methods
 
@@ -575,8 +579,25 @@ class TheNYTimesAPI {
 
 **Rule of thumb: Do not use interfaces to export constants**
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/TheNYTimes.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/TheNYTimesAPI.kt)**
 
 -- 
+
+## Prefer class hierarchies to tagged classes
+
+> Tagged class is a class defined using enums and tag fields through which the instances are flavored.
+
+They are cluttered with boilerplate, including enum declarations, tag fields and switch statements. Memory usage of these instances are burdened with irrelevant fields belonging to other flavors. **Tagged classes are verbose, error-prone and inefficient**
+
+**A tagged classes is a pallid imitation of a class hierarchy.** Abstract classes and interfaces are used to model this class hierarchy the way we want to. This can add much more flexibility to the class that we build. This class can be further extending to house even more features and flavors.  
+
+**Rule of thumb: Do not use tagged classes but use class hierarchy instead**
+
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Figure.kt)**
+
+-- 
+
+## Use function literals to represent strategies
+
 
 
