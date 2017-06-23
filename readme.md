@@ -593,6 +593,31 @@ They are cluttered with boilerplate, including enum declarations, tag fields and
 
 **Rule of thumb: Do not use tagged classes but use class hierarchy instead**
 
+```kotlin
+
+abstract class Figure {
+  abstract fun area(): Double
+}
+
+class Circle(val radius: Int) : Figure() {
+
+  override fun area(): Double {
+    return Math.PI * (radius * radius)
+  }
+
+}
+
+open class Rectangle(val length: Int, val width: Int) : Figure() {
+
+  override fun area(): Double {
+    return (length * width).toDouble()
+  }
+
+}
+
+
+```
+
 **[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Figure.kt)**
 
 -- 
