@@ -1,13 +1,12 @@
-# Effective Kotlin
+# Effective Java to Kotlin
 
 [![codebeat badge](https://codebeat.co/badges/55c838ce-608d-4eeb-a706-36117513f1a7)](https://codebeat.co/projects/github-com-narenkmanoharan-effective-kotlin-master) [![Build Status](https://travis-ci.org/narenkmanoharan/Effective-Kotlin.svg?branch=master)](https://travis-ci.org/narenkmanoharan/Effective-Kotlin) [![codecov](https://codecov.io/gh/narenkmanoharan/Effective-Kotlin/branch/master/graph/badge.svg)](https://codecov.io/gh/narenkmanoharan/Effective-Kotlin) [![CircleCI](https://circleci.com/gh/narenkmanoharan/Effective-Kotlin.svg?style=svg)](https://circleci.com/gh/narenkmanoharan/Effective-Kotlin) 
-
-
-Kotlin implementation of the effective java items from [Effective Java](https://www.amazon.com/Effective-Java-2nd-Joshua-Bloch/dp/0321356683) book by Joshua Block.
 
 ## Table of Contents
 
 #### 1. Creating and Destroying objects
+
+Item 0: [Introduction](#introduction)
 
 Item 1: [Static Factory Methods](#static-factory-methods)
 
@@ -55,6 +54,10 @@ Item 20: [Prefer class hierarchies to tagged classes](#prefer-class-hierarchies-
 
 Item 21: [Use function literals to represent strategies](#use-function-literals-to-represent-strategies)
 
+# Introduction
+
+Kotlin implementation of the effective java items from [Effective Java](https://www.amazon.com/Effective-Java-2nd-Joshua-Bloch/dp/0321356683) book by Joshua Block.
+
 ## Static Factory Methods
 
 A simple static method that returns an instance of the class. Implemented in Kotlin using [Object declarations.](https://kotlinlang.org/docs/reference/object-declarations.html)
@@ -87,7 +90,7 @@ A simple static method that returns an instance of the class. Implemented in Kot
 
 This pattern is used when designing classes whose constructors may have more than a handful of parameters. They also simulate the behavior of named optional parameters which are available in Kotlin. 
 
-In most cases you don't need to use builders in Kotlin because we have default and named arguments. But, it is nice to have.
+In most cases you don't need to use builders in Kotlin since we have default and named arguments. But it is nice to have.
 
 **[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Vacation.kt)**
 
@@ -651,7 +654,7 @@ val upperCasePrinter: Printer = Printer(upperCaseFormatter)
 
 ```
 
-**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Discount.kt)**
+**[Code available here](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Customer.kt)**
 
 --
 
