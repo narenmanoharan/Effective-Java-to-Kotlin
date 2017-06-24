@@ -2,9 +2,11 @@
 
 [![codebeat badge](https://codebeat.co/badges/55c838ce-608d-4eeb-a706-36117513f1a7)](https://codebeat.co/projects/github-com-narenkmanoharan-effective-kotlin-master) [![Build Status](https://travis-ci.org/narenkmanoharan/Effective-Kotlin.svg?branch=master)](https://travis-ci.org/narenkmanoharan/Effective-Kotlin) [![codecov](https://codecov.io/gh/narenkmanoharan/Effective-Kotlin/branch/master/graph/badge.svg)](https://codecov.io/gh/narenkmanoharan/Effective-Kotlin) [![CircleCI](https://circleci.com/gh/narenkmanoharan/Effective-Kotlin.svg?style=svg)](https://circleci.com/gh/narenkmanoharan/Effective-Kotlin) 
 
+Kotlin implementation of the effective java items from [Effective Java](https://www.amazon.com/Effective-Java-2nd-Joshua-Bloch/dp/0321356683) book by Joshua Block.
+
 ## Table of Contents
 
-#### 1. Creating and Destroying objects
+#### Chapter 1. Creating and Destroying objects
 
 Item 0: [Introduction](#introduction)
 
@@ -22,7 +24,7 @@ Item 6: [Eliminate Obsolete Object References](#eliminate-obsolete-object-refere
 
 Item 7: [Avoid finalizers](#avoid-finalizers)
 
-#### 2. Methods common to all objects
+#### Chapter 2. Methods common to all objects
 
 Item 8: [Overriding Equals](#overriding-equals)
 
@@ -34,7 +36,7 @@ Item 11: [Cloning Objects](#cloning-objects)
 
 Item 12: [Implementing Comparable and Using Comparators](#implementing-comparable-and-using-comparators)
 
-#### 3. Classes and Interfaces
+#### Chapter 3. Classes and Interfaces
 
 Item 13: [Class and Member accessibility minimization](#class-and-member-accessibility-minimization)
 
