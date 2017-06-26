@@ -11,7 +11,7 @@ class Box<T>(private val name: String, private val items: List<T>) {
   fun getName(): String {
     return name
   }
-  
+
 }
 
 class BoxOut<out T>(private val name: String, private val items: List<T>) {

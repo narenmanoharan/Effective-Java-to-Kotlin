@@ -12,9 +12,7 @@ import com.google.common.truth.Truth.assertThat
 class BoxTest {
 
   val boxOfBooks: Box<Books> = Box("Book box", listOf(Java, Kotlin))
-
   val boxOutOfBooks: BoxOut<Books> = BoxOut("Book out box", listOf(Android, Testing))
-
   val boxInOfBooks: BoxIn<Books> = BoxIn()
 
   @Test fun getItems() {
