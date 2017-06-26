@@ -4,18 +4,19 @@
 
 class Box<T>(private val name: String, private val items: List<T>) {
 
-  fun getItem(): List<T> {
+  fun getItems(): List<T> {
     return items
   }
 
   fun getName(): String {
     return name
   }
+  
 }
 
 class BoxOut<out T>(private val name: String, private val items: List<T>) {
 
-  fun getItem(): List<T> {
+  fun getItems(): List<T> {
     return items
   }
 
@@ -24,7 +25,6 @@ class BoxOut<out T>(private val name: String, private val items: List<T>) {
   }
 
 }
-
 
 class BoxIn<in T> {
 
