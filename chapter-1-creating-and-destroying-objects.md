@@ -126,5 +126,25 @@ Used in order to ensure a class only has one instance, and provide a global poin
 
 ---
 
+## Item 4: Non-instantiability using Private Constructors
+
+In order to ensure non-instantiability of a class, a private constructor might come in handy. Using this we can make sure that we only instantiate the class when absolutely required using a factory or builder pattern.
+
+Utility classes are not designed to be instantiated: an instance would be nonsensical. In the absence of explicit constructors, however, the compiler provides a public, parameterless default constructor. To a user, this constructor is indistinguishable from any other. It is not uncommon to see unintentionally instantiable classes in published APIs.
+
+> There is, however, a simple idiom to ensure noninstantiability. A default constructor is generated only if a class contains no explicit constructors, so a class can be made noninstantiable by including a private constructor.
+
+#### Cases
+
+* To prevent instantiation outside of the object in
+  * Singleton
+  * Factory Method
+  * Static-methods-only \(utility\) class
+  * Constants-only class
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Burger.kt)
+
+---
+
 
 
