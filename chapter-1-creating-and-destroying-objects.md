@@ -156,10 +156,10 @@ fun isBabyBoomer(): Boolean {
 
     val calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
     calendar.set(1946, Calendar.JANUARY, 1, 0, 0, 0)
-    
+
     Date boomStart = calendar.getTime()
     calendar.set(1965, Calendar.JANUARY, 1, 0, 0, 0)
-    
+
     Date boomEnd = calendar.getTime();
     return birthDate.compareTo(boomStart) >= 0 && birthDate.compareTo(boomEnd) < 0;
 
@@ -171,10 +171,10 @@ init {
 
     val calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
     calendar.set(1946, Calendar.JANUARY, 1, 0, 0, 0)
-    
+
     Date boomStart = calendar.getTime()
     calendar.set(1965, Calendar.JANUARY, 1, 0, 0, 0)
-    
+
     Date boomEnd = calendar.getTime();
     return birthDate.compareTo(boomStart) >= 0 && birthDate.compareTo(boomEnd) < 0;
 
@@ -185,5 +185,37 @@ init {
 
 ---
 
+## Item 6: Eliminate Obsolete Object References
 
+Memory leakage is a serious issue that we need take care of in both Java and Kotlin which can easily lead to an OutOfMemoryError if not carefully dealt with. Also, it might adversely affect the performance of the program by increased garbage collector activity or increased memory footprint.
+
+#### Sources of Memory leaks
+
+* Whenever a class manages its own memory, the programmer should be vigilant for memory leaks
+* Whenever an element is freed, any object references contained in the element should also be nulled out
+* Caches as a source of memory leaks:
+  * see WeakHashMap class
+  * the cache should occasionally be cleaned \(using background thread or as a side effect of adding new entries to the cache\)
+* Listeners and other callbacks \(Specifically callbacks in Android whether be it Asynctasks or OnClickListeners\) as a source of memory leaks:
+  * use weak references
+
+```kotlin
+ fun pop(): E {
+    if (isEmpty())
+      throw RuntimeException("Stack underflow")
+    val item = array[--N]
+    array[N] = null             // dereferencing the array 
+    return item
+  }
+```
+
+#### Rules of Thumb
+
+Programmers should not be obsessed with nulling out object references. Nulling out object references should be the exception rather than the norm. The best way to eliminate an obsolete reference is to let the variable that contained the reference fall out of scope. This occurs naturally if you define each variable in the narrowest possible scope
+
+#### When should we null out a reference?
+
+In the case of a stack, it maintains it’s own memory for storing elements. When array elements fall out of scope, we just need to let the garbage collector about this by nulling out the references. Whenever a class manages its own memory, the programmer should be vigilant for memory leaks. Whenever an element is freed, any object references contained in the element should be nulled out.
+
+---
 
