@@ -89,5 +89,42 @@ class Vacation (val destination: String?, val duration: Int, val mode: Mode, val
 
 ---
 
+## Item 3: Singleton Pattern
+
+Used in order to ensure a class only has one instance, and provide a global point of access to it. But this is mostly considered an Anti-pattern in the OOD community because of its behavior in relation to the design principles.
+
+> The private constructor is used to ensuring this class can’t be initialized anywhere except inside of this class.
+
+#### Pros
+
+* Lazy initialization
+* Thread safe \(Use of static block to instantiate object\)
+* Static Initialization
+
+#### Cons
+
+* Hides dependencies in the code rather than exposing it through interfaces.
+* Has its own lifetime and so making it [difficult to test](http://misko.hevery.com/2008/08/17/singletons-are-pathological-liars/)
+* They violate the single responsibility principle: by virtue of the fact that they control their own creation and lifecycle.
+* Produces tightly coupled code.
+
+#### Rules of Thumb
+
+* Abstract Factory, Builder, and Prototype can use Singleton in their implementation.
+
+* Facade objects are often Singletons because only one Facade object is required.
+
+* State objects are often Singletons.
+
+* The advantage of Singleton over global variables is that you are absolutely sure of the number of instances when you use Singleton, and, you can change your mind and manage any number of instances.
+
+* The Singleton design pattern is one of the most inappropriately used patterns. Singletons are intended to be used when a class must have exactly one instance, no more, no less. Designers frequently use Singletons in a misguided attempt to replace global variables. A Singleton is, for intents and purposes, a global variable. The Singleton does not do away with the global; it merely renames it.
+
+* When is Singleton unnecessary? Short answer: most of the time. Long answer: when it's simpler to pass an object resource as a reference to the objects that need it, rather than letting objects access the resource globally. The real problem with Singletons is that they give you such a good excuse not to think carefully about the appropriate visibility of an object. Finding the right balance of exposure and protection for an object is critical for maintaining flexibility.
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Database.kt)
+
+---
+
 
 
