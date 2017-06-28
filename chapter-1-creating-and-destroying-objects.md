@@ -1,6 +1,3 @@
-
----
-
 ## Item 1: Static Factory Methods
 
 A simple static method that returns an instance of the class. Implemented in Kotlin using [Object declarations.](https://kotlinlang.org/docs/reference/object-declarations.html)
@@ -91,4 +88,6 @@ class Vacation (val destination: String?, val duration: Int, val mode: Mode, val
 [**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Vacation.kt)
 
 ---
+
+
 
