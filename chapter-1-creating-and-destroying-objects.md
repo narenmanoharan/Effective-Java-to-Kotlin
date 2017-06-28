@@ -51,7 +51,6 @@ private constructor(private val model: String,
 
 ## Item 2: Builder Pattern
 
-  
 This pattern is used when designing classes whose constructors may have more than a handful of parameters. They also simulate the behavior of named optional parameters which are available in Kotlin.
 
 > In most cases, you don't need to use builders in Kotlin since we have default and named arguments. But it is nice to have.
@@ -66,7 +65,7 @@ This pattern is used when designing classes whose constructors may have more tha
 
 * Often, designs start out using Factory Method \(less complicated, more customizable, subclasses proliferate\) and evolve toward Abstract Factory, Prototype, or Builder \(more flexible, more complex\) as the designer discovers where more flexibility is needed.
 
-```
+```kotlin
 class Vacation (val destination: String?, val duration: Int, val mode: Mode, val cost: Int) {
 
   private constructor(builder: Vacation.Builder) : this(builder.destination, builder.duration, builder.mode, builder.cost)
@@ -78,13 +77,11 @@ class Vacation (val destination: String?, val duration: Int, val mode: Mode, val
   class Builder(val mode: Mode,val cost: Int) {
     var destination: String? = null
     var duration: Int = 0
-    
+
     fun build() = Vacation(this)
   }
 }
 ```
 
 [**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Vacation.kt)
-
-
 
