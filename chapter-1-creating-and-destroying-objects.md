@@ -146,5 +146,44 @@ Utility classes are not designed to be instantiated: an instance would be nonsen
 
 ---
 
+## Item 5: Avoid creating unnecessary objects
+
+Be careful when creating objects to make sure to reuse objects when possible. This can be done by the use of the init method available in Kotlin to initialize an object whenever the class is initialized, rather than having it be created every time a method is called on an instance. This helps with better performance and memory consumption.
+
+```kotlin
+// Don't do this - Creates a new instance every time (Depends on the API)
+fun isBabyBoomer(): Boolean {
+
+    val calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
+    calendar.set(1946, Calendar.JANUARY, 1, 0, 0, 0)
+    
+    Date boomStart = calendar.getTime()
+    calendar.set(1965, Calendar.JANUARY, 1, 0, 0, 0)
+    
+    Date boomEnd = calendar.getTime();
+    return birthDate.compareTo(boomStart) >= 0 && birthDate.compareTo(boomEnd) < 0;
+
+}
+
+
+// Do this instead - Reuses the same instance using the constructor
+init {
+
+    val calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"))
+    calendar.set(1946, Calendar.JANUARY, 1, 0, 0, 0)
+    
+    Date boomStart = calendar.getTime()
+    calendar.set(1965, Calendar.JANUARY, 1, 0, 0, 0)
+    
+    Date boomEnd = calendar.getTime();
+    return birthDate.compareTo(boomStart) >= 0 && birthDate.compareTo(boomEnd) < 0;
+
+}
+```
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Pizza.kt)
+
+---
+
 
 
