@@ -219,3 +219,22 @@ In the case of a stack, it maintains it’s own memory for storing elements. Whe
 
 ---
 
+## Item 7: Avoid finalizers
+
+`Finalize()`in Kotlin which is usually called with Java is not guaranteed to be called when declared and so anything time sensitive should never be done in them.
+
+> They are unpredictable and exhibit erratic behavior. Finalize is not synonymous to destructors in C++.
+
+The Java Language Specification provides several details related to Java finalizers in Section 12.6 \("Finalization of Class Instances"\). The section begins by describing Java finalizers: "The particular definition of finalize\(\) that can be invoked for an object is called the finalizer of that object. Before the storage for an object is reclaimed by the garbage collector, the Java Virtual Machine will invoke the finalizer of that object." Some of the intentionally indeterminate characteristics of Java finalizers described in this section of the Java Language Specification are quoted here:
+
+* The Java programming language does not specify how soon a finalizer will be invoked.
+* The Java programming language does not specify which thread will invoke the finalizer for any given object.
+* Finalizers may be called in any order, or even concurrently.
+* If an uncaught exception is thrown during the finalization, the exception is ignored and finalization of that object terminates.
+
+> Also, there is a severe performance penalty for using finalizers.
+
+---
+
+
+
