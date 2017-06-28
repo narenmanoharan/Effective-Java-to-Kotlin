@@ -1,3 +1,6 @@
+
+---
+
 ## Item 1: Static Factory Methods
 
 A simple static method that returns an instance of the class. Implemented in Kotlin using [Object declarations.](https://kotlinlang.org/docs/reference/object-declarations.html)
@@ -49,6 +52,8 @@ private constructor(private val model: String,
 
 [**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Car.kt)
 
+---
+
 ## Item 2: Builder Pattern
 
 This pattern is used when designing classes whose constructors may have more than a handful of parameters. They also simulate the behavior of named optional parameters which are available in Kotlin.
@@ -84,4 +89,6 @@ class Vacation (val destination: String?, val duration: Int, val mode: Mode, val
 ```
 
 [**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Vacation.kt)
+
+---
 
