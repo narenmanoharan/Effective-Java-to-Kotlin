@@ -95,11 +95,36 @@ If there is a specific format of the`toString`then mention them in the documenta
 
 Also, provide programmatic access to all the information contained in the value returned by`toString`.
 
-> **In Kotlin, we get all this for free using the`data class`provided by default**
+> **In Kotlin, we get all this for free using the**`data class`**provided by default**
 
 [**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Person.kt)
 
 ---
 
+## Item 11: Cloning Objects
 
+Cloning in kotlin is as easy as calling the copy method from the data class. The method provided by the data class offers the following:
+
+```kotlin
+- x.copy() !== x
+- x.javaClass == x.copy().javaClass
+- x.copy().equals(x)
+```
+
+This method provided by Kotlin itself satisfies all the requirements that are requested by the contract of implementing the Cloneable interface in Java to expose the protected clone\(\) method in the object class.
+
+And in this method, we could also provide named arguments as to what should be different from the data class it is cloned from. The data class in kotlin uses the copy constructor approach from Java to implement it's cloning facility.
+
+It uses a copy constructor and a static factory which provides a lot more robustness over implementing the Cloneable interface. Such as
+
+* Doesn't rely on a risk-prone extralinguistic object creation mechanism
+* Doesn't demand unenforceable adherence to not-so documented conventions
+* Doesn't conflict with vals
+* Doesn't throw checked exceptions
+* Doesn't require casts
+* Add interface like functionality since Cloneable doesn't have a public `clone `method
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Sheep.kt)
+
+---
 
