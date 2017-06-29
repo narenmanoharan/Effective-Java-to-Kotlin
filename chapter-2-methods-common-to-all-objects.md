@@ -74,7 +74,9 @@ var result = fName.hashCode()
 For each significant field f \(All field defined in the`equals`method\), do the following:
 
 * Compute an`Int hashCode c`for the field
-  * Boolean:
+  * Boolean: `f ?: 0`
+  * Byte, Char, Short, Float, Double, Int: 
+  * Long: `(f ^ (f >>> 32)).toInt()`
   * The class's `equals `method compares the field by recursively invoking equals and invoke the `hashCode`
     on the field.
   * Array: Each element is treated as a separate field by applying the rules recursively.
