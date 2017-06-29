@@ -122,9 +122,50 @@ It uses a copy constructor and a static factory which provides a lot more robust
 * Doesn't conflict with vals
 * Doesn't throw checked exceptions
 * Doesn't require casts
-* Add interface like functionality since Cloneable doesn't have a public `clone `method
+* Add interface like functionality since Cloneable doesn't have a public `clone`method
 
 [**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Sheep.kt)
 
 ---
+
+## Item 12: Implementing Comparable and Using Comparators
+
+Implementing the comparable interface in the class provides a "natural" way of ordering the objects created by the class. The`compareTo`method provided by the comparable interface is used to sort the collection in the way specified. The general contract of the`compareTo`method is similar to that of the`equals`method.
+
+* Compare
+  `this`
+  object with the other object provided
+* Returns a negative integer if the object is less than the object it is compared to.
+* Returns zero if they are equal
+* Returns a positive integer if the object is greater than the object it is compared to.
+* Throws
+  `ClassCastException`
+  if the specified object's type prevents it from being compared to this Object.
+
+The contract specification goes as follows
+
+```kotlin
+- x.compareTo(y) == -y.compareTo(x) for all x and y
+- Transitivity: (x.compareTo(y) > 0 && y.compareTo(z) > 0)
+- if x.compareTo(y) == 0, then x.compareTo(z) == y.compareTo(z) 
+- Recommendation: (x.compareTo(y) == 0) == (x.equals(y))
+```
+
+#### `compareBy`using Comparator
+
+The`compareBy`function available in Kotlin is used to sort an object with multiple fields with the use of comparators and method references. This creates a comparator using the sequence of functions to calculate a result of the comparison. This is called in the sequence that we need the list to be ordered.
+
+```kotlin
+// Using the it operator
+val sortedListOfMovies: List<Movies> = list.sortedWith(compareBy({ it.rating }, { it.year }))
+
+// Using method references 
+val sortedListOfMovies: List<Movie> = moviesList.sortedWith(compareBy(Movie::rating, Movie::year))
+```
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Movie.kt)
+
+---
+
+
 
