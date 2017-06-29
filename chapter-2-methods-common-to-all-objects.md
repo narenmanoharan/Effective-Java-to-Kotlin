@@ -75,13 +75,17 @@ For each significant field f \(All field defined in the`equals`method\), do the 
 
 * Compute an`Int hashCode c`for the field
   * Boolean: `f ?: 0`
-  * Byte, Char, Short, Float, Double, Int: 
+  * Byte, Char, Short, Float, Double, Int: `f.toInt()`
   * Long: `(f ^ (f >>> 32)).toInt()`
-  * The class's `equals `method compares the field by recursively invoking equals and invoke the `hashCode`
+  * The class's `equals`method compares the field by recursively invoking equals and invoke the `hashCode`
     on the field.
   * Array: Each element is treated as a separate field by applying the rules recursively.
 
 > **In Kotlin, we get all this for free using the**`data class`**provided by default**
 
 [**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Person.kt)
+
+---
+
+
 
