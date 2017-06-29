@@ -61,7 +61,7 @@ There is a rule to always override`hashCode`whenever`equals`is overridden. If th
 
 The vital part of writing the`hashCode`method relies on the fact that**equal objects must have equal hash codes**. A good hashCode should always produce different hashcodes for unequal objects.
 
-> **In Kotlin, we get all this for free using the`data class`provided by default**
+> **In Kotlin, we get all this for free using the**`data class`**provided by default**
 
 #### Steps to write a high quality`hashCode`method
 
@@ -75,9 +75,11 @@ For each significant field f \(All field defined in the`equals`method\), do the 
 
 * Compute an`Int hashCode c`for the field
   * Boolean:
+  * The class's `equals `method compares the field by recursively invoking equals and invoke the `hashCode`
+    on the field.
   * Array: Each element is treated as a separate field by applying the rules recursively.
 
-> **In Kotlin, we get all this for free using the`data class`provided by default**
+> **In Kotlin, we get all this for free using the**`data class`**provided by default**
 
 [**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Person.kt)
 
