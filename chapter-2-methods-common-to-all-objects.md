@@ -87,5 +87,19 @@ For each significant field f \(All field defined in the`equals`method\), do the 
 
 ---
 
+## Item 10: Overriding toString
+
+A good`toString`implementation makes the class much more pleasant to use. It clearly displays the most significant information required in a class object. If the`toString`method is not overridden, then printing the object would return the class name followed by the unsigned hexadecimal representation of the hashcode.
+
+If there is a specific format of the`toString`then mention them in the documentation. If not then make a specific comment about the`toString`method.
+
+Also, provide programmatic access to all the information contained in the value returned by`toString`.
+
+> **In Kotlin, we get all this for free using the`data class`provided by default**
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Person.kt)
+
+---
+
 
 
