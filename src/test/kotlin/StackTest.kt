@@ -8,7 +8,7 @@ import java.util.EmptyStackException
  */
 class StackTest {
 
-  val stack: Stack = Stack(emptyArray())
+  val stack: Stack = Stack(emptyArray(), capacity = 2)
 
   @Before fun setUp() {
     stack.push(10)
@@ -16,8 +16,16 @@ class StackTest {
 
   @Test fun push() {
     assertThat(stack.toString())
-        .contains("Stack(elements=[10], size=1, capacity=16)")
+        .contains("Stack(elements=[10], size=1, capacity=2)")
   }
+
+  @Test fun testCopyPush() {
+    stack.push(20)
+    stack.push(30)
+    assertThat(stack.toString())
+        .contains("Stack(elements=[10, 20, 30], size=3, capacity=2)")
+  }
+
 
   @Test fun pop() {
     assertThat(stack.pop())
@@ -49,7 +57,7 @@ class StackTest {
 
   @Test fun testToString() {
     assertThat(stack.toString())
-        .contains("Stack(elements=[10], size=1, capacity=16)")
+        .contains("Stack(elements=[10], size=1, capacity=2)")
   }
 
   @Test fun testSize() {
