@@ -1,4 +1,5 @@
 import com.google.common.truth.Truth.assertThat
+import org.junit.Before
 import org.junit.Test
 
 /**
@@ -8,21 +9,23 @@ class StackTest {
 
   val stack: Stack = Stack(emptyArray())
 
-  @Test fun push() {
+  @Before fun setUp() {
     stack.push(10)
+  }
+
+  @Test fun push() {
     assertThat(stack.toString())
         .contains("Stack(elements=[10], size=1")
   }
 
   @Test fun pop() {
-    stack.push(10)
     assertThat(stack.pop())
         .isEqualTo(10)
   }
 
   @Test fun isEmpty() {
     assertThat(stack.isEmpty())
-        .isTrue()
+        .isFalse()
   }
 
   @Test fun getElements() {
@@ -42,7 +45,7 @@ class StackTest {
 
   @Test fun testToString() {
     assertThat(stack.toString())
-        .contains("Stack(elements=[], size=0, capacity=16)")
+        .contains("Stack(elements=[10], size=1, capacity=16)")
   }
 
 }
