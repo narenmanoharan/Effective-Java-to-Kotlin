@@ -16,7 +16,7 @@ class StackTest {
 
   @Test fun push() {
     assertThat(stack.toString())
-        .contains("Stack(elements=[10], size=1")
+        .contains("Stack(elements=[10], size=1, capacity=16)")
   }
 
   @Test fun pop() {
@@ -27,6 +27,9 @@ class StackTest {
   @Test fun isEmpty() {
     assertThat(stack.isEmpty())
         .isFalse()
+    stack.pop()
+    assertThat(stack.isEmpty())
+        .isTrue()
   }
 
   @Test fun getElements() {
