@@ -1,6 +1,7 @@
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Test
+import java.util.EmptyStackException
 
 /**
  * Created by Naren on 6/26/17.
@@ -46,6 +47,18 @@ class StackTest {
   @Test fun testToString() {
     assertThat(stack.toString())
         .contains("Stack(elements=[10], size=1, capacity=16)")
+  }
+
+  @Test fun testSize() {
+    assertThat(stack.size())
+        .isEqualTo(1)
+  }
+
+
+  @Test(expected = EmptyStackException::class)
+  fun failedPop() {
+    stack.pop()
+    stack.pop()
   }
 
 }

@@ -24,6 +24,10 @@ class Stack(var elements: Array<Any>?, private var size: Int = 0, private val ca
     return size == 0
   }
 
+  fun size() : Int {
+    return size
+  }
+
   private fun ensureCapacity() {
     if (elements?.size == size)
       elements = Arrays.copyOf(elements!!, 2 * size + 1)
