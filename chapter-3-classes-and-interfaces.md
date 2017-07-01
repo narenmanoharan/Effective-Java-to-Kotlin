@@ -55,5 +55,23 @@ Also, public classes should never expose mutable fields. If a class is package-p
 
 ## Item 15: Minimize Mutability
 
+Immutability is an important concept in programming especially concurrent programming where multiple threads might try and access a specific resource. Making the resource immutable helps us make sure that the state isn't altered by any one thread and read incorrectly by other threads leading to a race condition.
+
+By making a class immutable we can control the number of states it could be in by creating objects corresponding each state either using constructors or static factories. Kotlin heavily places emphasis on making objects and classes immutable with the introduction of`val`.
+
+> **The general rule of thumb in Kotlin is to make every reference a val is possible.**
+
+Immutable classes, in general, are easier to design, implement and use than its mutable variants. They are also less error prone and more secure.
+
+Here are the rules to make a class immutable,
+
+* Do not provide method to mutate the objects state \(Mutators\)
+* Leave the class closed by default - To stop subclassing
+* All the properties should be
+  `private vals`
+* Exclusive access to any mutable components - If the class has a property that refers to mutable objects then make sure that it does not contain any reference to these objects. Always return a defensive copy in constructors, accessors and readObject methods.
+
+
+
 
 
