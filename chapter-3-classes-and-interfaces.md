@@ -1,4 +1,4 @@
-##  Item 13: Class and Member accessibility minimization
+## Item 13: Class and Member accessibility minimization
 
 #### Rule of thumb: Make each class or member as inaccessible as possible.
 
@@ -45,7 +45,6 @@ var setterVisibility: String = "ABC"
 
 var setterWithAnnotation: Any? = null
     @Inject set // annotate the setter with Inject
-
 ```
 
 Also, public classes should never expose mutable fields. If a class is package-private or is a private nested class, then exposing the properties is not a problem.
@@ -53,6 +52,8 @@ Also, public classes should never expose mutable fields. If a class is package-p
 [**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/HeightConverter.kt)
 
 ---
+
+## Item 15: Minimize Mutability
 
 
 
