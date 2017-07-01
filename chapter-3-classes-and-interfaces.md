@@ -98,13 +98,25 @@ Also implicitly making the object lazy also helps when trying to retrieve the pr
 
 ## Item 16: Favor Composition over Inheritance
 
-In this module, we will discuss the effects of_implementation inheritance_which occurs when one class inherits another. The other case where_interface inheritance_takes place does not have any glaring holes that need to be addressed.
+In this module, we will discuss the effects of\_implementation inheritance\_which occurs when one class inherits another. The other case where\_interface inheritance\_takes place does not have any glaring holes that need to be addressed.
 
 > **Composition models the "has-a" relationship**
 >
 > **Inheritance extends the "is-a" relationship**
 
 Only use inheritance when the class that you are extending has been documented for inheritance and does not have any self-use calls that haven't been documented. For all other cases, use composition instead.
+
+#### Problems with Implementation Inheritance
+
+Inheritance, in general, violates encapsulation. In order to create a subclass from a class, we need open up the class for an extension which breaks encapsulation and many other SOLID principles that we talked about. Also, inheritance creates dependence upon the superclass so as to make sure we propagate the change that takes place in the superclass. If a specific change is made to the superclass and it is not addressed in the subclasses then most of the time, the code breaks.
+
+This is why it is always important to**inherit only from classes which are documented for inheritance.**In these classes, we have all the information we know and a contract such that if a code breaking change is made, then we have the proper documentation to fix it as soon as possible.
+
+Also if we try and overcome these issues by just adding methods to the subclass without overriding them. Then we might run into an unfortunate error where there might be a new method added with the same name and different return type. This will result in a compilation error since JLS 8.4.8.3
+
+> **Composition:**The technique where we provide the new class with a reference to an instance of the superclass without extending it. Hence, the existing class becomes the component of the new one.
+>
+> **Forwarding:**Each instance method in the new class invokes the corresponding method_\(Forwarding method\)_on the contained instance of the existing class_\(Forwarding Class\)_.
 
 
 
