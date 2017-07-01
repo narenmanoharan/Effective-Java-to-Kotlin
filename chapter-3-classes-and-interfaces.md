@@ -71,7 +71,23 @@ Here are the rules to make a class immutable,
   `private vals`
 * Exclusive access to any mutable components - If the class has a property that refers to mutable objects then make sure that it does not contain any reference to these objects. Always return a defensive copy in constructors, accessors and readObject methods.
 
+#### Advantages of Immutable Objects
 
+* Simple
+* Thread Safe \(Require no synchronization\)
+* Can be shared freely
+* No defensive copies needed in case of immutable objects \(ImmutableList\)
+* No copies of the same object needed \(Do not provide clone method\)
+* Share their internals as well \(Just a property\)
+* Great building blocks for other objects
 
+#### Disadvantages
+
+* Require separate objects for each distinct value
+* Serialization might be a problem
+
+#### 
+
+  
 
 
