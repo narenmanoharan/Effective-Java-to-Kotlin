@@ -86,8 +86,15 @@ Here are the rules to make a class immutable,
 * Require separate objects for each distinct value
 * Serialization might be a problem
 
-#### 
+#### Remember
 
-  
+Before creating an instance make sure that the object is of the class type that we require and not a subclass of the same. If so, then make a defensive copy of the object to make sure it cannot be modified.
+
+Also implicitly making the object lazy also helps when trying to retrieve the property of the object multiple times.
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Complex.kt)
+
+---
+
 
 
