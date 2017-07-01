@@ -96,5 +96,15 @@ Also implicitly making the object lazy also helps when trying to retrieve the pr
 
 ---
 
+## Item 16: Favor Composition over Inheritance
+
+In this module, we will discuss the effects of_implementation inheritance_which occurs when one class inherits another. The other case where_interface inheritance_takes place does not have any glaring holes that need to be addressed.
+
+> **Composition models the "has-a" relationship**
+>
+> **Inheritance extends the "is-a" relationship**
+
+Only use inheritance when the class that you are extending has been documented for inheritance and does not have any self-use calls that haven't been documented. For all other cases, use composition instead.
+
 
 
