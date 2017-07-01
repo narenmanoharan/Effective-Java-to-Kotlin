@@ -116,7 +116,30 @@ Also if we try and overcome these issues by just adding methods to the subclass 
 
 > **Composition:**The technique where we provide the new class with a reference to an instance of the superclass without extending it. Hence, the existing class becomes the component of the new one.
 >
-> **Forwarding:**Each instance method in the new class invokes the corresponding method_\(Forwarding method\)_on the contained instance of the existing class_\(Forwarding Class\)_.
+> **Forwarding:**Each instance method in the new class invokes the corresponding method_\(Forwarding method\)\_on the contained instance of the existing class_\(Forwarding Class\)\_.
+
+This is similar to the **decorator pattern **seen in the SOLID principles and Kotlin has inbuilt support for it.
+
+```kotlin
+class Rectangle(val width:Int, val height:Int) {
+    fun area() = width * height
+}
+
+class Window(val bounds:Rectangle) {
+    // Delegation
+    fun area() = bounds.area()
+}
+```
+
+This type of forwarding is loosely known as Delegation
+
+Also, these type of compositions is not suitable for Callback frameworks where objects references get passed around. In this case, the SELF-reference of the class gets muddled and so it is better to avoid the wrapper class in such cases.
+
+> **Rule of thumb: Check if the following can be implemented using Composition before using Inheritance.**
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/CEO.kt)
+
+---
 
 
 
