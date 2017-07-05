@@ -333,5 +333,107 @@ val staticInner: Inner = Static.Inner()
 staticInner.reference() // Inner Class ref Static$Inner@213413
 ```
 
+#### Non-Static member classes
+
+* Each instance of a non-static member class is implicitly associated with an enclosing instance of its containing class
+
+* You can invoke methods on the enclosing instance or obtain a reference to the enclosing instance using the qualified this construct
+
+* The association between a non-static member class instance and its enclosing instance is established when the former is created
+
+* The association takes up space in the non-static member class instance and adds time to its construction
+
+> One common use of a non-static member class is to define an Adapter
+
+**Defined with the `inner`keyword**
+
+```kotlin
+class NonStatic {
+
+  private val x = 100
+
+  inner class Inner {
+
+    fun getOuterVal(): Int {
+      return x
+    }
+
+    fun getInnerRef(): String {
+      return "Inner class reference is $this"
+    }
+
+    fun getOuterRef(): String {
+      return "Outer class reference is $this@NonStatic"
+    }
+  }
+}
+
+val nonStatic: NonStatic = NonStatic()
+val inner: NonStatic.Inner = nonStatic.Inner()
+
+inner.getOuterVal() // 100
+```
+
+#### Anonymous Inner Class
+
+One common use of anonymous classes is to create function objects. In Android, it was mostly used before Java 8 compatibility to create listeners and to pass around function objects such as comparators and threads.
+
+```kotlin
+// Anonymous Inner Class
+
+ button.addActionListener( ActionListener() {
+  fun actionPerformed(ActionEvent e){
+    comp.setText("Button has been clicked")
+  }
+})
+```
+
+#### Local Class
+
+Local classes are the least frequently used of the four kinds of nested classes. A local class can be declared anywhere a local variable can be declared and obeys the same scoping rules.
+
+```kotlin
+// Local Class
+
+class Local {
+  private val x = "local outer"
+
+  fun doStuff(): String {
+    class MyInner {
+      fun seeOuter(): String {
+        return "x is $x"
+      }
+    }
+
+    val i = MyInner()
+    return i.seeOuter()
+  }
+}
+
+// Static Local Class
+
+object StaticLocal {
+
+  private val x = "static local outer"
+
+  fun doStuff() : String {
+    class MyInner {
+      fun seeOuter(): String {
+        return "x is $x"
+      }
+    }
+
+    val i = MyInner()
+    return i.seeOuter()
+  }
+}
+
+val local: Local = Local()
+
+local.doStuff() // x is local outer
+
+StaticLocal.doStuff() // x is static local outer
+```
+
 
 
