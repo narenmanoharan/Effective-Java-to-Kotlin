@@ -345,7 +345,7 @@ staticInner.reference() // Inner Class ref Static$Inner@213413
 
 > One common use of a non-static member class is to define an Adapter
 
-**Defined with the `inner`keyword**
+**Defined with the **`inner`**keyword**
 
 ```kotlin
 class NonStatic {
@@ -434,6 +434,10 @@ local.doStuff() // x is local outer
 
 StaticLocal.doStuff() // x is static local outer
 ```
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Static.kt)
+
+---
 
 
 
