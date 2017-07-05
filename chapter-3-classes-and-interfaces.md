@@ -170,5 +170,40 @@ class Dog: Animal {
 
 ---
 
+## Item 18: Prefer interfaces to abstract classes
+
+Two ways that permit multiple implementations:
+
+1. Interfaces
+2. Abstract Classes
+
+#### Advantages of using Interfaces
+
+> Existing classes can easily implement a new interface
+
+All a class has to do when it comes to implementing a new interface is to implement all the required methods \(Nondefault methods\). This cannot be said about abstract class high up in the type hierarchy where it subclasses an ancestor of both classes. This might end up forcing all its descendants to extend the new abstract class whether or not is appropriate for them.
+
+> Interfaces are ideal for defining mixins
+
+A mixin is a type that a class can implement in addition to its "primary type" to declare that it provides some optional behavior._Eg: Comparable_. Abstract classes cannot be used for this purpose.
+
+> Non-hierarchical type frameworks
+
+The type hierarchy is difficult to build since real world instances do not exactly fit into a rigid hierarchy. This can only be modeled by interfaces in the way with the flexibility that we need.
+
+> Enable safe, powerful functionality enhancements
+
+If abstract classes are used to implement inheritance in the first go, then we leave the programmer no option to use composition/wrapper classes to extend functionality. In Kotlin, interfaces could have implementations by default which can be overridden by the inheriting class if needed.
+
+> Skeletal implementations \(AbstractImplementations\) are a combination of interfaces and abstract classes which combine together to allows_**Simulated Multiple Inheritance**_.
+
+Documenting such skeletal implementations are vital since they are designed for inheritance. Unlike in Java 7, Kotlin interfaces can have also had default implementations in them which take away the evolutionary advantage of the abstract class.
+
+> Both Java 8 and Kotlin add flexibility to interfaces with default method implementations which greatly add flexibility to the interfaces and help improve the functionality.
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Skeleton.kt)
+
+---
+
 
 
