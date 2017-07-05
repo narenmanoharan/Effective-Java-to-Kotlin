@@ -207,7 +207,7 @@ Documenting such skeletal implementations are vital since they are designed for 
 
 ## Item 19: Use interface only to define types
 
-The interface should only be used to define_types_for the class which implements it. The interface should say something about the client instances which implement them.
+The interface should only be used to define\_types\_for the class which implements it. The interface should say something about the client instances which implement them.
 
 > An important anti-pattern which should be avoided is the**Constant Interface anti-pattern**\(Poor use of interface\)
 
@@ -234,6 +234,41 @@ class TheNYTimesAPI {
 **Rule of thumb: Do not use interfaces to export constants**
 
 [**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/TheNYTimesAPI.kt)
+
+---
+
+## Item 20: Prefer class hierarchies to tagged classes
+
+> Tagged class is a class defined using enums and tag fields through which the instances are flavored.
+
+They are cluttered with boilerplate, including enum declarations, tag fields, and switch statements. Memory usage of these instances is burdened with irrelevant fields belonging to other flavors.**Tagged classes are verbose, error-prone and inefficient**
+
+**A tagged class is a pallid imitation of a class hierarchy.**Abstract classes and interfaces are used to model this class hierarchy the way we want to. This can add much more flexibility to the class that we build. This class can be further extending to house even more features and flavors.
+
+**Rule of thumb: Do not use tagged classes but use class hierarchy instead**
+
+```kotlin
+abstract class Figure {
+  abstract fun area(): Double
+}
+
+class Circle(val radius: Int) : Figure() {
+
+  override fun area(): Double {
+    return Math.PI * (radius * radius)
+  }
+
+}
+
+open class Rectangle(val length: Int, val width: Int) : Figure() {
+
+  override fun area(): Double {
+    return (length * width).toDouble()
+  }
+}
+```
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Figure.kt)
 
 ---
 
