@@ -284,7 +284,7 @@ The introduction of first class functions which can help pass around behavior, j
 class Printer(val formatterStrategy: (String) -> String) {
 
     fun printString(string: String) = println(formatterStrategy.invoke(string))
-    
+
     //  fun printString(string: String): String = formatterStrategy(string)
 }
 
@@ -302,6 +302,36 @@ val upperCasePrinter: Printer = Printer(upperCaseFormatter)
 [**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Customer.kt)
 
 ---
+
+## Item 22: Favor static member classes over nonstatic
+
+Inner classes are nothing but classes defined inside an enclosing class. These classes have various levels of scopes when it comes to accessing variables. The different types of inner classes are
+
+1. Static member classes
+2. Non-Static member classes
+3. Anonymous Inner Classes
+4. Local classes
+
+#### Static Member Class
+
+The ordinary class that happens to be declared inside another class and has access to all of the enclosing class’s members, even those declared private.
+
+> One common use of a static member class is a public helper class, useful only in conjunction with its outer class.
+
+```kotlin
+class Static {
+  class Inner {
+    fun reference(): String {
+      return "Inner Class ref $this"
+    }
+  }
+}
+
+val static: Static = Static()
+val staticInner: Inner = Static.Inner()
+
+staticInner.reference() // Inner Class ref Static$Inner@213413
+```
 
 
 
