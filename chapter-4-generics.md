@@ -214,5 +214,48 @@ EventStream<Double>(loggingListener).start()
 EventStream<BigDecimal>(loggingListener).start()
 ```
 
+> Arrays fail at runtime whereas Generics result in compilation error. This fail-fast feature helps in reducing a lot of errors and speeds up the debugging process.
+
+Arrays are known for their reification, which means that they are aware of their element types at runtime. But Generic types, ensure erasure to maintain backward compatibility. Kotlin also supports type reification in generics with the addition of`reified`.
+
+#### Type erasure
+
+The JVM when converting generic code into bytecode erases all the generic information to ensure **backward compatibility **with legacy code. In Java, a class defined as List&lt;T&gt; in the source code would be compiled simply as List, or List&lt;Any&gt;, if you like.
+
+We can rectify this by using`@JvmName`.
+
+```kotlin
+class Foo {
+
+  @JvmName("barString")
+  fun bar(foo: List<String>): String {
+    return ""
+  }
+
+  @JvmName("barInt")
+  fun bar(foo: List<Int>): String {
+    return "2";
+  }
+}
+```
+
+The other approach is a limited form of reification.
+
+#### Type reification
+
+A reifiable type is the name given to a type when its type information can be inspected at runtime. Kotlin has introduced a feature called type reification that enables type information to be kept at runtime for inline functions. To use this feature, we add the keyword reified before the type parameter.
+
+```kotlin
+inline fun <reified T> runtimeType(): Unit {
+    println("My type parameter is " + T::class.qualifiedName)
+}
+```
+
+> Arrays and Generics do not mix well
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Stack.kt)
+
+---
+
 
 
