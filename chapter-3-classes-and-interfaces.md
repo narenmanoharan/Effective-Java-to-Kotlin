@@ -195,7 +195,7 @@ The type hierarchy is difficult to build since real world instances do not exact
 
 If abstract classes are used to implement inheritance in the first go, then we leave the programmer no option to use composition/wrapper classes to extend functionality. In Kotlin, interfaces could have implementations by default which can be overridden by the inheriting class if needed.
 
-> Skeletal implementations \(AbstractImplementations\) are a combination of interfaces and abstract classes which combine together to allows_**Simulated Multiple Inheritance**_.
+> Skeletal implementations \(AbstractImplementations\) are a combination of interfaces and abstract classes which combine together to allows _**Simulated Multiple Inheritance**_.
 
 Documenting such skeletal implementations are vital since they are designed for inheritance. Unlike in Java 7, Kotlin interfaces can have also had default implementations in them which take away the evolutionary advantage of the abstract class.
 
