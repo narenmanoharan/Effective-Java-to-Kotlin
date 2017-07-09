@@ -1,6 +1,6 @@
 ## Item 23: Don't Use raw types in new code
 
-A generic class is one which is_typesafe\_and has one or more type parameters in its declaration. Generic classes and interfaces are collectively known as\_generic types_. But in Kotlin, the compiler forces you to use parameterized type definitions or else it won't compile.
+A generic class is one which is _typesafe and has one or more type parameters in its declaration. Generic classes and interfaces are collectively known as generic types_. But in Kotlin, the compiler forces you to use parameterized type definitions or else it won't compile.
 
 ```kotlin
 // Parameterized collection of Animals
@@ -9,7 +9,7 @@ val listOfAnimals: List<Animal> = listOf(Lion, Tiger, Wolf)
 
 #### Benefits of using Generic and Parameterized types
 
-* Produce \_typesafe \_code
+* Produce _typesafe_ code
 * Warn during compile time rather than fail during runtime
 * No manual casting when getting elements from collections.
 
@@ -124,7 +124,7 @@ You cannot use the`@SuppressWarnings`annotation on the return of a function and 
 
 Also leaving out unchecked warnings creates a sense of complacency which might result in an important warning being left out. So, it is wise to make a decision on suppressing annotations safely and correcting errors that could be corrected.
 
-**Kotlin has removed checked exceptions completely citing the reasons of producing verbose, meaningless cod**
+**Kotlin has removed checked exceptions completely citing the reasons of producing verbose, meaningless code**
 
 ---
 
