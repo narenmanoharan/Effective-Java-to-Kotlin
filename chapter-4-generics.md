@@ -1,4 +1,4 @@
-## Item 23: Don't Use raw types in new code
+Item 23: Don't Use raw types in new code
 
 A generic class is one which is_typesafe\_and has one or more type parameters in its declaration. Generic classes and interfaces are collectively known as\_generic types_. But in Kotlin, the compiler forces you to use parameterized type definitions or else it won't compile.
 
@@ -99,11 +99,5 @@ Whenever the Type T is unknown and needs to be safely accessed then star project
   }
 ```
 
-[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Box.kt)
-
----
-
----
-
-
+[**Code availa**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Box.kt)
 
