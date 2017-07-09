@@ -1,4 +1,4 @@
-Item 23: Don't Use raw types in new code
+## Item 23: Don't Use raw types in new code
 
 A generic class is one which is_typesafe\_and has one or more type parameters in its declaration. Generic classes and interfaces are collectively known as\_generic types_. But in Kotlin, the compiler forces you to use parameterized type definitions or else it won't compile.
 
@@ -90,7 +90,7 @@ Whenever the Type T is unknown and needs to be safely accessed then star project
   }
 
   // Star Projections - typesafe and flexible
-  fun numElementsInCommon(s1: Set<?>, s2: Set<*>): Int {
+  fun numElementsInCommon(s1: Set<*>, s2: Set<*>): Int {
     var result = 0
     for (o1 in s1)
       if (s2.contains(o1))
@@ -99,5 +99,30 @@ Whenever the Type T is unknown and needs to be safely accessed then star project
   }
 ```
 
-[**Code availa**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Box.kt)
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Box.kt)
+
+## Item 24: Eliminate unchecked warnings
+
+Unchecked checked warning always occur when working with Generics
+
+* Cast warnings
+* Method Invocation warnings
+* Generic array creation warnings
+* Conversion warnings
+
+> Always eliminate every unchecked warning that you can.
+
+If you cannot eliminate a warning but you can prove that your code is typesafe, then and only then suppress the warning with a`@SuppressWarnings("unchecked")`annotation
+
+> Always use`@SuppressWarnings`annotation on the smallest scope possible. Try moving it into a local variable instead of a method if possible.
+
+You cannot use the`@SuppressWarnings`annotation on the return of a function and so you should declare a local variable to handle that.
+
+> Every time you add the`@SuppressWarnings`annotation, don't forget to add a comment to mention why it's safe to do so.
+
+Also leaving out unchecked warnings creates a sense of complacency which might result in an important warning being left out. So, it is wise to make a decision on suppressing annotations safely and correcting errors that could be corrected.
+
+**Kotlin has removed checked exceptions completely citing the reasons of producing verbose, meaningless code**
+
+
 
