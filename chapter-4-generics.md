@@ -9,7 +9,7 @@ val listOfAnimals: List<Animal> = listOf(Lion, Tiger, Wolf)
 
 #### Benefits of using Generic and Parameterized types
 
-* Produce _typesafe _code
+* Produce \_typesafe \_code
 * Warn during compile time rather than fail during runtime
 * No manual casting when getting elements from collections.
 
@@ -19,7 +19,7 @@ fun random(one: Any, two: Any, three: Any): Any
 
 // Using Type Parameter
  fun <T> random(one: T, two: T, three: T): T
- 
+
 // Called as such and infers that T is of type String
 val randomGreeting: String = random("hello", "Willkommen", "bonjour")
 
@@ -48,6 +48,62 @@ fun <T : Comparable<T>> min(first: T, second: T): T {
 val a: Int = min(4, 5)
 val b: String = min("e", "c")
 ```
+
+> Whenever a type parameter is used without an explicit upper bound, the compiler will use Any as an implicit upper bound for us.
+
+#### Multiple Bounds
+
+Using the`where`clause we can ensure that our function, class has multiple bounds. But we need to extend both the bounds for this to work.
+
+```kotlin
+fun <T> minSerializable(first: T, second: T): T where T : Comparable<T>, T : Serializable {
+    val k = first.compareTo(second)
+    return if (k <= 0) first else second
+}
+
+class SerializableYear(val value: Int): Comparable<SerializableYear>, Serializable {
+    override fun compareTo(other: SerializableYear): Int =
+    this.value.compareTo(other.value)
+}
+
+val b = minSerializable(SerializableYear(1969), SerializableYear(1802))
+
+
+// Classes with Multiple upper bounds
+class MultipleBoundedClass<T> where T : Comparable<T>, T : Serializable
+```
+
+#### Star Projections
+
+Whenever the Type T is unknown and needs to be safely accessed then star projections \(\*\) are used.
+
+> Note: star-projections are very much like Java's raw types, but safe.
+
+```kotlin
+// Use of the raw type for unknown element type - Can't do this in Kotlin!(Throws compile error)
+  fun numElementsInCommon(s1: Set, s2: Set): Int {
+    var result = 0
+    for (o1 in s1)
+      if (s2.contains(o1))
+        result++
+    return result
+  }
+
+  // Star Projections - typesafe and flexible
+  fun numElementsInCommon(s1: Set<?>, s2: Set<*>): Int {
+    var result = 0
+    for (o1 in s1)
+      if (s2.contains(o1))
+        result++
+    return result
+  }
+```
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Box.kt)
+
+---
+
+---
 
 
 
