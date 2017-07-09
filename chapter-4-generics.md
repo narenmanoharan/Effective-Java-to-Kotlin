@@ -101,6 +101,8 @@ Whenever the Type T is unknown and needs to be safely accessed then star project
 
 [**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Box.kt)
 
+---
+
 ## Item 24: Eliminate unchecked warnings
 
 Unchecked checked warning always occur when working with Generics
@@ -123,6 +125,10 @@ You cannot use the`@SuppressWarnings`annotation on the return of a function and 
 Also leaving out unchecked warnings creates a sense of complacency which might result in an important warning being left out. So, it is wise to make a decision on suppressing annotations safely and correcting errors that could be corrected.
 
 **Kotlin has removed checked exceptions completely citing the reasons of producing verbose, meaningless code**
+
+---
+
+---
 
 
 
