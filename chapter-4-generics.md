@@ -154,7 +154,6 @@ fun foo(crate: Crate<Fruit>): Unit {
 val oranges = Crate(mutableListOf(Orange(), Orange())) // Since crate can have any fruit, it could also have apples but that would result in an illegal ClassCastException when retrieving the elements
 foo(oranges)
 val orange: Orange = oranges.last()
-
 ```
 
 > #### Covariance
@@ -192,7 +191,27 @@ val farm: Farm = SheepFarm()
 val animal1 = farm.get()
 val sheepFarm = SheepFarm()
 val animal2 = sheepFarm.get()
+```
 
+> #### Contravariance
+
+Contravariance is the opposite of covariance where the subtype and supertype are interchanges using the keyword`in`. By marking the type parameter as contravariant, then, for a given type M, M&lt;T&gt; is a subtype of M&lt;U&gt; if U is a subtype of T.
+
+> A function can be invoked with a type or a subtype of the required type.
+
+```kotlin
+interface Listener<in T> {
+    fun onNext(t: T): Unit
+}
+
+class EventStream<in T>(val listener: Listener<T>) {
+    fun start(): Unit = TODO()
+    fun stop(): Unit = TODO()
+}
+
+// Used as
+EventStream<Double>(loggingListener).start()
+EventStream<BigDecimal>(loggingListener).start()
 ```
 
 
