@@ -25,3 +25,419 @@ The data class in kotlin provides us with all the necessary tools under the hood
 
 ---
 
+## Item 14: Accessor Methods or Properties
+
+Do not use public properties which are mutable. This could adversely encapsulation. In Kotlin, properties function as default getters and setters meaning that we don't explicit have to method getters and setters for every field that we have in a class. But it helps to set custom getters and setters as follows.
+
+```kotlin
+var integerRepresentation: String
+    get() = this.toInt()
+    set(value) {
+        setDataFromInt(value) // parses the string and assigns values to other properties
+}
+```
+
+We can also make sure that the properties remain private using the following:
+
+```kotlin
+var setterVisibility: String = "ABC"
+    private set // the setter is private and has the default implementation
+
+var setterWithAnnotation: Any? = null
+    @Inject set // annotate the setter with Inject
+```
+
+Also, public classes should never expose mutable fields. If a class is package-private or is a private nested class, then exposing the properties is not a problem.
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/HeightConverter.kt)
+
+---
+
+## Item 15: Minimize Mutability
+
+Immutability is an important concept in programming especially concurrent programming where multiple threads might try and access a specific resource. Making the resource immutable helps us make sure that the state isn't altered by any one thread and read incorrectly by other threads leading to a race condition.
+
+By making a class immutable we can control the number of states it could be in by creating objects corresponding each state either using constructors or static factories. Kotlin heavily places emphasis on making objects and classes immutable with the introduction of`val`.
+
+> **The general rule of thumb in Kotlin is to make every reference a val is possible.**
+
+Immutable classes, in general, are easier to design, implement and use than its mutable variants. They are also less error prone and more secure.
+
+Here are the rules to make a class immutable,
+
+* Do not provide method to mutate the objects state \(Mutators\)
+* Leave the class closed by default - To stop subclassing
+* All the properties should be
+  `private vals`
+* Exclusive access to any mutable components - If the class has a property that refers to mutable objects then make sure that it does not contain any reference to these objects. Always return a defensive copy in constructors, accessors and readObject methods.
+
+#### Advantages of Immutable Objects
+
+* Simple
+* Thread Safe \(Require no synchronization\)
+* Can be shared freely
+* No defensive copies needed in case of immutable objects \(ImmutableList\)
+* No copies of the same object needed \(Do not provide clone method\)
+* Share their internals as well \(Just a property\)
+* Great building blocks for other objects
+
+#### Disadvantages
+
+* Require separate objects for each distinct value
+* Serialization might be a problem
+
+#### Remember
+
+Before creating an instance make sure that the object is of the class type that we require and not a subclass of the same. If so, then make a defensive copy of the object to make sure it cannot be modified.
+
+Also implicitly making the object lazy also helps when trying to retrieve the property of the object multiple times.
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Complex.kt)
+
+---
+
+## Item 16: Favor Composition over Inheritance
+
+In this module, we will discuss the effects of\_implementation inheritance\_which occurs when one class inherits another. The other case where\_interface inheritance\_takes place does not have any glaring holes that need to be addressed.
+
+> **Composition models the "has-a" relationship**
+>
+> **Inheritance extends the "is-a" relationship**
+
+Only use inheritance when the class that you are extending has been documented for inheritance and does not have any self-use calls that haven't been documented. For all other cases, use composition instead.
+
+#### Problems with Implementation Inheritance
+
+Inheritance, in general, violates encapsulation. In order to create a subclass from a class, we need open up the class for an extension which breaks encapsulation and many other SOLID principles that we talked about. Also, inheritance creates dependence upon the superclass so as to make sure we propagate the change that takes place in the superclass. If a specific change is made to the superclass and it is not addressed in the subclasses then most of the time, the code breaks.
+
+This is why it is always important to**inherit only from classes which are documented for inheritance.**In these classes, we have all the information we know and a contract such that if a code breaking change is made, then we have the proper documentation to fix it as soon as possible.
+
+Also if we try and overcome these issues by just adding methods to the subclass without overriding them. Then we might run into an unfortunate error where there might be a new method added with the same name and different return type. This will result in a compilation error since JLS 8.4.8.3
+
+> **Composition:**The technique where we provide the new class with a reference to an instance of the superclass without extending it. Hence, the existing class becomes the component of the new one.
+>
+> **Forwarding:**Each instance method in the new class invokes the corresponding method_\(Forwarding method\)\_on the contained instance of the existing class_\(Forwarding Class\)\_.
+
+This is similar to the **decorator pattern **seen in the SOLID principles and Kotlin has inbuilt support for it.
+
+```kotlin
+class Rectangle(val width:Int, val height:Int) {
+    fun area() = width * height
+}
+
+class Window(val bounds:Rectangle) {
+    // Delegation
+    fun area() = bounds.area()
+}
+```
+
+This type of forwarding is loosely known as Delegation
+
+Also, these type of compositions is not suitable for Callback frameworks where objects references get passed around. In this case, the SELF-reference of the class gets muddled and so it is better to avoid the wrapper class in such cases.
+
+> **Rule of thumb: Check if the following can be implemented using Composition before using Inheritance.**
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/CEO.kt)
+
+---
+
+## Item 17: Design and Document for inheritance or else prohibit it
+
+Inheriting a class that is not documented for inheritance will always result in broken and unmanageable code. As we saw in the previous module, documenting an`open class`with all the necessary information known to inherit the methods is vital to inheritance.
+
+In order to achieve proper documentation of a class for inheritance, the class should have the following
+
+* The class should document its self-use of overridable methods
+* Provide details into the internal workings of the protected methods which might be inherited
+* Test the classes by creating various subclasses
+* Constructors must not invoke overridable methods
+* Neither the clone nor readObject methods should be able to invoke the overridable methods directly or indirectly
+* Designing a class for inheritance, substantially limit what a class can do.
+
+Kotlin provides the`open class`operator to explicitly open a class for inheritance only when needed. And to add to that, in kotlin we need to`open fun`to open up the methods we need to override and`open val/var`to open up properties.
+
+```kotlin
+open class Animal {
+    ...
+}
+
+class Dog: Animal {
+    ...
+}
+```
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Animal.kt)
+
+---
+
+## Item 18: Prefer interfaces to abstract classes
+
+Two ways that permit multiple implementations:
+
+1. Interfaces
+2. Abstract Classes
+
+#### Advantages of using Interfaces
+
+> Existing classes can easily implement a new interface
+
+All a class has to do when it comes to implementing a new interface is to implement all the required methods \(Nondefault methods\). This cannot be said about abstract class high up in the type hierarchy where it subclasses an ancestor of both classes. This might end up forcing all its descendants to extend the new abstract class whether or not is appropriate for them.
+
+> Interfaces are ideal for defining mixins
+
+A mixin is a type that a class can implement in addition to its "primary type" to declare that it provides some optional behavior._Eg: Comparable_. Abstract classes cannot be used for this purpose.
+
+> Non-hierarchical type frameworks
+
+The type hierarchy is difficult to build since real world instances do not exactly fit into a rigid hierarchy. This can only be modeled by interfaces in the way with the flexibility that we need.
+
+> Enable safe, powerful functionality enhancements
+
+If abstract classes are used to implement inheritance in the first go, then we leave the programmer no option to use composition/wrapper classes to extend functionality. In Kotlin, interfaces could have implementations by default which can be overridden by the inheriting class if needed.
+
+> Skeletal implementations \(AbstractImplementations\) are a combination of interfaces and abstract classes which combine together to allows_**Simulated Multiple Inheritance**_.
+
+Documenting such skeletal implementations are vital since they are designed for inheritance. Unlike in Java 7, Kotlin interfaces can have also had default implementations in them which take away the evolutionary advantage of the abstract class.
+
+> Both Java 8 and Kotlin add flexibility to interfaces with default method implementations which greatly add flexibility to the interfaces and help improve the functionality.
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Skeleton.kt)
+
+---
+
+## Item 19: Use interface only to define types
+
+The interface should only be used to define\_types\_for the class which implements it. The interface should say something about the client instances which implement them.
+
+> An important anti-pattern which should be avoided is the**Constant Interface anti-pattern**\(Poor use of interface\)
+
+This might cause implementation detail to leak into the class's exported API. If a superclass implements the constants interface then all its subclasses are polluted by the constants in the interface.
+
+#### Best ways to implement constants
+
+* In an existing class or interface, just add them in the class or interface._Eg. Integer \(MAX\_VALUE, MIN\_VALUE\)_
+
+* If the constants are best viewed as the members of an enum type them to implement them as an enum class
+
+* Export them in a non-instantiable Utility class.
+
+```kotlin
+class TheNYTimesAPI {
+  companion object {
+    const val API_KEY = "bfa504d8afec47basdfsda7b3dab9201ddd"
+    const val BASE_URL = "https://api.nytimes.com/"
+    const val API_ENDPOINT = "/svc/search/v2/articlesearch.json"
+  }
+}
+```
+
+**Rule of thumb: Do not use interfaces to export constants**
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/TheNYTimesAPI.kt)
+
+---
+
+## Item 20: Prefer class hierarchies to tagged classes
+
+> Tagged class is a class defined using enums and tag fields through which the instances are flavored.
+
+They are cluttered with boilerplate, including enum declarations, tag fields, and switch statements. Memory usage of these instances is burdened with irrelevant fields belonging to other flavors.**Tagged classes are verbose, error-prone and inefficient**
+
+**A tagged class is a pallid imitation of a class hierarchy.**Abstract classes and interfaces are used to model this class hierarchy the way we want to. This can add much more flexibility to the class that we build. This class can be further extending to house even more features and flavors.
+
+**Rule of thumb: Do not use tagged classes but use class hierarchy instead**
+
+```kotlin
+abstract class Figure {
+  abstract fun area(): Double
+}
+
+class Circle(val radius: Int) : Figure() {
+
+  override fun area(): Double {
+    return Math.PI * (radius * radius)
+  }
+
+}
+
+open class Rectangle(val length: Int, val width: Int) : Figure() {
+
+  override fun area(): Double {
+    return (length * width).toDouble()
+  }
+}
+```
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Figure.kt)
+
+---
+
+## Item 21: Use function literals to represent strategies
+
+With kotlin, we have support for lambdas, higher order functions, domain specific delegates and function literals. This comes to our aid when implementing strategies or more specifically the Strategy pattern.
+
+> Define a family of algorithms, encapsulate each one, and make them interchangeable
+
+The introduction of first class functions which can help pass around behavior, just like we would pass objects around. This reduces the complexity of implementing the strategy pattern to a simple predicate or`when`condition statement.
+
+```kotlin
+class Printer(val formatterStrategy: (String) -> String) {
+
+    fun printString(string: String) = println(formatterStrategy.invoke(string))
+
+    //  fun printString(string: String): String = formatterStrategy(string)
+}
+
+val lowerCaseFormatter: (String) -> String = { it.toLowerCase() }
+
+val upperCaseFormatter = { it: String -> it.toUpperCase() }
+
+// Call the function using a printer instance
+
+val lowerCasePrinter: Printer = Printer(lowerCaseFormatter)
+
+val upperCasePrinter: Printer = Printer(upperCaseFormatter)
+```
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Customer.kt)
+
+---
+
+## Item 22: Favor static member classes over nonstatic
+
+Inner classes are nothing but classes defined inside an enclosing class. These classes have various levels of scopes when it comes to accessing variables. The different types of inner classes are
+
+1. Static member classes
+2. Non-Static member classes
+3. Anonymous Inner Classes
+4. Local classes
+
+#### Static Member Class
+
+The ordinary class that happens to be declared inside another class and has access to all of the enclosing class’s members, even those declared private.
+
+> One common use of a static member class is a public helper class, useful only in conjunction with its outer class.
+
+```kotlin
+class Static {
+  class Inner {
+    fun reference(): String {
+      return "Inner Class ref $this"
+    }
+  }
+}
+
+val static: Static = Static()
+val staticInner: Inner = Static.Inner()
+
+staticInner.reference() // Inner Class ref Static$Inner@213413
+```
+
+#### Non-Static member classes
+
+* Each instance of a non-static member class is implicitly associated with an enclosing instance of its containing class
+
+* You can invoke methods on the enclosing instance or obtain a reference to the enclosing instance using the qualified this construct
+
+* The association between a non-static member class instance and its enclosing instance is established when the former is created
+
+* The association takes up space in the non-static member class instance and adds time to its construction
+
+> One common use of a non-static member class is to define an Adapter
+
+**Defined with the **`inner`**keyword**
+
+```kotlin
+class NonStatic {
+
+  private val x = 100
+
+  inner class Inner {
+
+    fun getOuterVal(): Int {
+      return x
+    }
+
+    fun getInnerRef(): String {
+      return "Inner class reference is $this"
+    }
+
+    fun getOuterRef(): String {
+      return "Outer class reference is $this@NonStatic"
+    }
+  }
+}
+
+val nonStatic: NonStatic = NonStatic()
+val inner: NonStatic.Inner = nonStatic.Inner()
+
+inner.getOuterVal() // 100
+```
+
+#### Anonymous Inner Class
+
+One common use of anonymous classes is to create function objects. In Android, it was mostly used before Java 8 compatibility to create listeners and to pass around function objects such as comparators and threads.
+
+```kotlin
+// Anonymous Inner Class
+
+ button.addActionListener( ActionListener() {
+  fun actionPerformed(ActionEvent e){
+    comp.setText("Button has been clicked")
+  }
+})
+```
+
+#### Local Class
+
+Local classes are the least frequently used of the four kinds of nested classes. A local class can be declared anywhere a local variable can be declared and obeys the same scoping rules.
+
+```kotlin
+// Local Class
+
+class Local {
+  private val x = "local outer"
+
+  fun doStuff(): String {
+    class MyInner {
+      fun seeOuter(): String {
+        return "x is $x"
+      }
+    }
+
+    val i = MyInner()
+    return i.seeOuter()
+  }
+}
+
+// Static Local Class
+
+object StaticLocal {
+
+  private val x = "static local outer"
+
+  fun doStuff() : String {
+    class MyInner {
+      fun seeOuter(): String {
+        return "x is $x"
+      }
+    }
+
+    val i = MyInner()
+    return i.seeOuter()
+  }
+}
+
+val local: Local = Local()
+
+local.doStuff() // x is local outer
+
+StaticLocal.doStuff() // x is static local outer
+```
+
+[**Code available here**](https://github.com/narenkmanoharan/Effective-Kotlin/blob/master/src/main/kotlin/Static.kt)
+
+---
+
+
+
