@@ -10,7 +10,7 @@ This book was created with the intention of translating the effective java items
 
 > Kotlin is designed to be an industrial-strength object-oriented language, and a "better language" than Java, but still be fully interoperable with Java code, allowing companies to make a gradual migration from Java to Kotlin.
 
-With this in mind, the developers of Kotlin have designed the language with Effective Java in mind thereby rectifying a lot of problems put forth by Java. This can be seen throughout this book as we read through all the Java items and the correction of those problems through new features introduced in Kotlin.
+The developers of Kotlin have designed the language with Effective Java in mind thereby rectifying a lot of problems put forth by Java. This can be seen throughout this book as we read through all the Java items and the correction of those problems through new features introduced in Kotlin.
 
 This doesn't mean that Kotlin only has improvements in the modules mentioned in Effective Java. Kotlin has introduced a lot more features and better ways to write code and this will be addressed in the module named Effective Kotlin which will be available soon.
 
