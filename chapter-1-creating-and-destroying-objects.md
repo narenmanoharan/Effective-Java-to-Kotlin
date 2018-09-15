@@ -16,7 +16,7 @@ A simple static method that returns an instance of the class. Implemented in Kot
 * Classes without public or protected constructors cannot be subclassed.
 
 ```kotlin
-private constructor(private val model: String,
+class Car private constructor(private val model: String,
     private val brand: Brand,
     private val maxSpeed: Int? ,
     private val hp: Int?,
